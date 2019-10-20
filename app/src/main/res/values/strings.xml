@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Timetable KAIT 20</string>
+
+    <string name="timetable_tab_title">Timetable</string>
+    <string name="replacements_tab_title">Replacements</string>
+    <string name="timetable_monday">Monday</string>
+    <string name="timetable_tuesday">Tuesday</string>
+    <string name="timetable_wednesday">Wednesday</string>
+    <string name="timetable_thursday">Thursday</string>
+    <string name="timetable_friday">Friday</string>
+</resources>
