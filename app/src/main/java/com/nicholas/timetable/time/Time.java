@@ -1,22 +1,26 @@
 package com.nicholas.timetable.time;
 
-import android.util.Log;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class Time {
 
     private static final String TAG = "Time";
 
-    private long seconds;
-    private int day;
+    private CallType callType;
 
+    private DateFormat dateFormat;
+    private String nextCallStr;
 
     public Time(){
-        Calendar cal = Calendar.getInstance();
-        Log.d(TAG, String.format("Time: %s", cal.getTime()));
+        dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
+    }
+
+
+    public enum CallType{
+        NO_LESSONS, TO_LESSON, FROM_LESSON, TO_LUNCH
     }
 
 }
