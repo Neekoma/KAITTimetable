@@ -1,0 +1,61 @@
+[
+		{
+			"type": "toLesson",
+			"time": "9:00"
+		},
+		{
+			"type": "fromLesson",
+			"time": "10:30"
+		},
+		{
+			"type": "toLesson",
+			"time": "10:40"
+		},
+		{
+			"type": "toLunch",
+			"time": "11:25",
+			"groupsAtLunch": "ИСП111, ИСП121, ИСП141"
+		},
+		{
+			"type": "toLesson",
+			"time": "11:45"
+		},
+		{
+			"type": "toLunch",
+			"time": "12:30",
+			"groupsAtLunch": "П211, П231, П221"
+		},
+		{
+			"type": "toLesson",
+			"time": "12:50"
+		},
+		{
+			"type": "toLunch",
+			"time": "13:35",
+			"groupsAtLunch": "П311, П321, ТП411, ТП431"
+		},
+		{
+			"type": "toLesson",
+			"time": "13:55"
+		},
+		{
+			"type": "fromLesson",
+			"time": "14:40"
+		},
+		{
+			"type": "toLesson",
+			"time": "14:50"
+		}
+		{
+			"type": "fromLesson",
+			"time": "16:20"
+		},
+		{
+			"type": "toLesson",
+			"time": "16:30"
+		}
+		{
+			"type": "fromLesson",
+			"time": "18:00"
+		}
+	]

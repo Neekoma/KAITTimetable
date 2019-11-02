@@ -8,4 +8,9 @@
     <string name="timetable_wednesday">Wednesday</string>
     <string name="timetable_thursday">Thursday</string>
     <string name="timetable_friday">Friday</string>
+
+
+    <string name="calls_type_to_lesson">To lesson</string>
+    <string name="calls_type_from_lesson">From lesson</string>
+    <string name="calls_type_to_lunch">To lunch</string>
 </resources>
