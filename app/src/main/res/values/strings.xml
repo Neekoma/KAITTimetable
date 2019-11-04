@@ -13,4 +13,7 @@
     <string name="calls_type_to_lesson">To lesson</string>
     <string name="calls_type_from_lesson">From lesson</string>
     <string name="calls_type_to_lunch">To lunch</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

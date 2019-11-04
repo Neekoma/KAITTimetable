@@ -1,61 +1,61 @@
 [
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "9:00"
 		},
 		{
-			"type": "fromLesson",
+			"type": "На перемену",
 			"time": "10:30"
 		},
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "10:40"
 		},
 		{
-			"type": "toLunch",
+			"type": "На обед",
 			"time": "11:25",
 			"groupsAtLunch": "ИСП111, ИСП121, ИСП141"
 		},
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "11:45"
 		},
 		{
-			"type": "toLunch",
+			"type": "На обед",
 			"time": "12:30",
 			"groupsAtLunch": "П211, П231, П221"
 		},
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "12:50"
 		},
 		{
-			"type": "toLunch",
+			"type": "На обед",
 			"time": "13:35",
 			"groupsAtLunch": "П311, П321, ТП411, ТП431"
 		},
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "13:55"
 		},
 		{
-			"type": "fromLesson",
+			"type": "На перемену",
 			"time": "14:40"
 		},
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "14:50"
-		}
+		},
 		{
-			"type": "fromLesson",
+			"type": "На перемену",
 			"time": "16:20"
 		},
 		{
-			"type": "toLesson",
+			"type": "На занятие",
 			"time": "16:30"
-		}
+		},
 		{
-			"type": "fromLesson",
+			"type": "Последний",
 			"time": "18:00"
 		}
 	]

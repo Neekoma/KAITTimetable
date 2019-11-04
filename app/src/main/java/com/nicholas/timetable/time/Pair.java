@@ -2,12 +2,8 @@ package com.nicholas.timetable.time;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Pair {
 
-   private static final String TYPE_TO_LESSON = "ToLesson";
-   private static final String TYPE_FROM_LESSON = "fromLesson";
-   private static final String TYPE_TO_LUNCH = "toLunch";
-
+public class Pair{
 
     @SerializedName("type")
     private String type;
@@ -16,9 +12,16 @@ public class Pair {
     @SerializedName("groupsAtLunch")
     private String groupsAtLunch;
 
+    public String getType() {
+        return type;
+    }
 
-    public String getType(){return type;}
-    public String getTime(){return time;}
-    public String getGroupsAtLunch(){return groupsAtLunch;}
+    public String getTime() {
+        return time;
+    }
+
+    public String getGroupsAtLunch() {
+        return groupsAtLunch;
+    }
 
 }

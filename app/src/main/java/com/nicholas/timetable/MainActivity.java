@@ -1,8 +1,10 @@
 package com.nicholas.timetable;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -19,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initWidgets();
         initPageAdapter(viewPager);
         tabLayout.setupWithViewPager(viewPager);
-        Timer.getInstance().startTimer();
+        initCallsFragment();
     }
 
 
@@ -30,11 +33,19 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.fragment_container);
     }
+
     private void initPageAdapter(ViewPager viewPager){
         pageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
         pageAdapter.addFragment(new TimetableFragment(), getString(R.string.timetable_tab_title));
         pageAdapter.addFragment(new ReplacementFragment(), getString(R.string.replacements_tab_title));
         viewPager.setAdapter(pageAdapter);
+    }
+
+    private void initCallsFragment(){
+        CallsFragment fragment = new CallsFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.timerFragment_container, fragment);
+        transaction.commit();
     }
 
 
