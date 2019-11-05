@@ -22,9 +22,6 @@ import java.util.Date;
 public class Timer extends AsyncTask<Void, String, String> {
 
     private static final int TIME_FOR_SLEEP = 1000 * 60; // Раз в минуту
-    private static final String TYPE_TO_LESSON = "На занятие";
-    private static final String TYPE_FROM_LESSON = "На перемену";
-    private static final String TYPE_TO_LUNCH = "На обед";
     private static final int FIRST_CALL = 0;
     private static final int LAST_CALL = 1;
     private static final String CALLS_ASSET_FILENAME = "calls_time.json";
@@ -50,8 +47,6 @@ public class Timer extends AsyncTask<Void, String, String> {
 
     private void update(){
         Date currentDate = new Date();
-//        try{currentDate = dateFormat.parse("11:10");}
-//        catch (ParseException e){}
         if(currentDate.getDay() >= 6) {
             mCallTv.setText("Следующий звонок в понедельник в 9:00");
             mGroupsTv.setText("");
