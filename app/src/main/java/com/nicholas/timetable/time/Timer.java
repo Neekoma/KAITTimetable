@@ -21,7 +21,7 @@ import java.util.Date;
 
 public class Timer extends AsyncTask<Void, String, String> {
 
-    private static final int TIME_FOR_SLEEP = 3500;
+    private static final int TIME_FOR_SLEEP = 1000 * 60; // Раз в минуту
     private static final String TYPE_TO_LESSON = "На занятие";
     private static final String TYPE_FROM_LESSON = "На перемену";
     private static final String TYPE_TO_LUNCH = "На обед";
@@ -58,16 +58,20 @@ public class Timer extends AsyncTask<Void, String, String> {
             return;
         }
 
-        if(checkFirstAndLastCall(currentDate) == FIRST_CALL){
+        String currentTimeStr = dateFormat.format(currentDate);
+        Date currentTime = null;
+        try{currentTime = dateFormat.parse(currentTimeStr);}
+        catch (ParseException e){e.printStackTrace();}
+
+        if(checkFirstAndLastCall(currentTime) == FIRST_CALL){
             mCallTv.setText("Следующий звонок в 9:00");
             return;
         }
-        else if(checkFirstAndLastCall(currentDate) == LAST_CALL)
+        else if(checkFirstAndLastCall(currentTime) == LAST_CALL)
         {
             mCallTv.setText("Следующий звонок завтра в 9:00");
             return;
         }
-
 
         for(int i = 0; i < pairs.size(); i++){
             Date date1 = null;
@@ -77,10 +81,12 @@ public class Timer extends AsyncTask<Void, String, String> {
             }
             catch (ParseException e){e.printStackTrace();}
             catch (IndexOutOfBoundsException e1){}
-            if(currentDate.compareTo(date1) == 1 && currentDate.compareTo(date2) == -1){
+            if(currentTime.compareTo(date1) == 1 && currentTime.compareTo(date2) == -1){
                 mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
+                else if(pairs.get(i).getGroupsAtLunch() != null)
+                    mGroupsTv.setText(String.format("Сейчас обедают группы: %s", pairs.get(i).getGroupsAtLunch()));
                 else{
                     mGroupsTv.setText("");
                 }
