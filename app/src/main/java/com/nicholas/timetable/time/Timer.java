@@ -21,7 +21,7 @@ import java.util.Date;
 
 public class Timer extends AsyncTask<Void, String, String> {
 
-    private static final int TIME_FOR_SLEEP = 1000 * 60; // Раз в минуту
+    private static final int TIME_FOR_SLEEP = 1000 * 33; // Раз в 33 секунды
     private static final int FIRST_CALL = 0;
     private static final int LAST_CALL = 1;
     private static final String CALLS_ASSET_FILENAME = "calls_time.json";
@@ -97,6 +97,7 @@ public class Timer extends AsyncTask<Void, String, String> {
             lastcall = dateFormat.parse("18:00");
         }
         catch (ParseException e){}
+        Log.d("Debug", Integer.toString(currentDate.compareTo(firstCall)));
         if(currentDate.compareTo(firstCall) == -1)
             return FIRST_CALL;
         else if(currentDate.compareTo(lastcall) == 1)
