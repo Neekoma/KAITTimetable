@@ -38,4 +38,10 @@ public class CallsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(callTv.length() == 0)
+            timer.update();
+    }
 }

@@ -2,6 +2,7 @@ package com.nicholas.timetable;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.pm.ActivityInfo;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private SectionsPageAdapter pageAdapter;
+
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private void initWidgets(){
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.fragment_container);
+        swipeRefresh = findViewById(R.id.swipe_refresh);
+        swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     private void initPageAdapter(ViewPager viewPager){

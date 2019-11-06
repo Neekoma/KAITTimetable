@@ -45,7 +45,7 @@ public class Timer extends AsyncTask<Void, String, String> {
     }
 
 
-    private void update(){
+    public void update(){
         Date currentDate = new Date();
         if(currentDate.getDay() >= 6) {
             mCallTv.setText("Следующий звонок в понедельник в 9:00");
@@ -97,7 +97,6 @@ public class Timer extends AsyncTask<Void, String, String> {
             lastcall = dateFormat.parse("18:00");
         }
         catch (ParseException e){}
-        Log.d("Debug", Integer.toString(currentDate.compareTo(firstCall)));
         if(currentDate.compareTo(firstCall) == -1)
             return FIRST_CALL;
         else if(currentDate.compareTo(lastcall) == 1)

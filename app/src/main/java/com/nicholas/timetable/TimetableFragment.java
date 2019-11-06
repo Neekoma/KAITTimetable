@@ -1,6 +1,7 @@
 package com.nicholas.timetable;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,22 +11,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.nicholas.timetable.viewmodels.TimetableFragmentViewModel;
 
 
-public class TimetableFragment extends Fragment {
+public class TimetableFragment extends Fragment implements TableFragment{
 
     private static final String TAG = "TimetableFragment";
 
-    private static TimetableFragmentViewModel viewModel = null;
+    private Context mContext;
 
-    private RecyclerView timetableRecyclerView;
+    private TableLayout table;
+    private TableRow groupsRow;
 
 
     public TimetableFragment() {
-        if (viewModel == null)
-            viewModel = new TimetableFragmentViewModel();
     }
 
 
@@ -33,8 +35,20 @@ public class TimetableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
-        timetableRecyclerView = view.findViewById(R.id.timetable_recyclerview);
+        mContext = view.getContext();
+        initTable();
         return view;
     }
 
+    @Override
+    public void initTable() {
+        table = new TableLayout(mContext);
+        table.setStretchAllColumns(true);
+        table.setShrinkAllColumns(true);
+    }
+
+    @Override
+    public void update() {
+
+    }
 }
