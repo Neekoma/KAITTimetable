@@ -3,9 +3,7 @@ package com.nicholas.timetable.time;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,10 +19,11 @@ import java.util.Date;
 
 public class Timer extends AsyncTask<Void, String, String> {
 
-    private static final int TIME_FOR_SLEEP = 1000 * 33; // Раз в 33 секунды
+    private static final int TIME_FOR_SLEEP = 1000 * 15; // Раз в 15 секунд
     private static final int FIRST_CALL = 0;
     private static final int LAST_CALL = 1;
     private static final String CALLS_ASSET_FILENAME = "calls_time.json";
+
     private Context mContext;
     private TextView mCallTv, mGroupsTv;
     private ArrayList<Pair> pairs;
@@ -64,7 +63,10 @@ public class Timer extends AsyncTask<Void, String, String> {
         }
         else if(checkFirstAndLastCall(currentTime) == LAST_CALL)
         {
-            mCallTv.setText("Следующий звонок завтра в 9:00");
+            if(currentDate.getDay() == 5)
+                mCallTv.setText("Следующий звонок в понедельник в 9:00");
+            else
+                mCallTv.setText("Следующий звонок завтра в 9:00");
             return;
         }
 
@@ -76,7 +78,7 @@ public class Timer extends AsyncTask<Void, String, String> {
             }
             catch (ParseException e){e.printStackTrace();}
             catch (IndexOutOfBoundsException e1){}
-            if(currentTime.compareTo(date1) == 1 && currentTime.compareTo(date2) == -1){
+            if(currentTime.compareTo(date1) == 1 && currentTime.compareTo(date2) == -1 || currentTime.compareTo(date2) == 0){
                 mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
