@@ -14,4 +14,7 @@
     <string name="calls_type_to_lesson">На пару</string>
     <string name="calls_type_from_lesson">На перемену</string>
     <string name="calls_type_to_lunch">На обед</string>
+
+
+    <string name="nextCallInNine">Следующий звонок завтра в 9:00</string>
 </resources>

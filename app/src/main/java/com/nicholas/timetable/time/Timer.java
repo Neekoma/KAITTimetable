@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nicholas.timetable.R;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -66,7 +67,7 @@ public class Timer extends AsyncTask<Void, String, String> {
             if(currentDate.getDay() == 5)
                 mCallTv.setText("Следующий звонок в понедельник в 9:00");
             else
-                mCallTv.setText("Следующий звонок завтра в 9:00");
+                mCallTv.setText(mContext.getString(R.string.nextCallInNine));
             return;
         }
 

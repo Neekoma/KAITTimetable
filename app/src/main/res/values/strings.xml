@@ -14,4 +14,6 @@
     <string name="calls_type_from_lesson">From lesson</string>
     <string name="calls_type_to_lunch">To lunch</string>
 
+    <string name="nextCallInNine">Next call will be in 9pm</string>
+
 </resources>

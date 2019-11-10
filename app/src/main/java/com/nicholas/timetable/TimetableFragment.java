@@ -17,17 +17,16 @@ import android.widget.TableRow;
 import com.nicholas.timetable.viewmodels.TimetableFragmentViewModel;
 
 
-public class TimetableFragment extends Fragment implements TableFragment{
+public class TimetableFragment extends Fragment{
 
     private static final String TAG = "TimetableFragment";
 
     private Context mContext;
 
-    private TableLayout table;
-    private TableRow groupsRow;
 
 
     public TimetableFragment() {
+
     }
 
 
@@ -36,19 +35,8 @@ public class TimetableFragment extends Fragment implements TableFragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         mContext = view.getContext();
-        initTable();
         return view;
     }
 
-    @Override
-    public void initTable() {
-        table = new TableLayout(mContext);
-        table.setStretchAllColumns(true);
-        table.setShrinkAllColumns(true);
-    }
 
-    @Override
-    public void update() {
-
-    }
 }

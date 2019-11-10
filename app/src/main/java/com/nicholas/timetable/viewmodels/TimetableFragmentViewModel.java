@@ -1,19 +1,34 @@
 package com.nicholas.timetable.viewmodels;
 
-import java.util.ArrayList;
 
-public class TimetableFragmentViewModel {
+import android.util.Log;
 
-    private ArrayList<String> groupsTitles;
+public class TimetableFragmentViewModel implements TimetableViewModel{
 
+    private static final String TAG = "TimetableViewModel";
 
-    public TimetableFragmentViewModel(){
-        groupsTitles = new ArrayList<>();
-        groupsTitles.add("П-311");
-        groupsTitles.add("ПиВ-211");
+    private static TimetableFragmentViewModel instance;
+
+    private TimetableFragmentViewModel(){
+
+    }
+
+    public static TimetableFragmentViewModel getInstance(){
+        if(instance == null)
+            instance = new TimetableFragmentViewModel();
+        return instance;
     }
 
 
-    public ArrayList<String> getGroupsTitles(){return groupsTitles;}
+    @Override
+    public boolean load() {
 
+        Log.d(TAG, "load");
+        return false;
+    }
+
+    @Override
+    public boolean update() {
+        return false;
+    }
 }
