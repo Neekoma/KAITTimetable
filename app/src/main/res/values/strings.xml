@@ -1,19 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Timetable KAIT 20</string>
+    <string name="app_name">Расписание КАИТ 20</string>
 
-    <string name="timetable_tab_title">Timetable</string>
-    <string name="replacements_tab_title">Replacements</string>
-    <string name="timetable_monday">Monday</string>
-    <string name="timetable_tuesday">Tuesday</string>
-    <string name="timetable_wednesday">Wednesday</string>
-    <string name="timetable_thursday">Thursday</string>
-    <string name="timetable_friday">Friday</string>
+    <string name="timetable_tab_title">Расписание</string>
+    <string name="replacements_tab_title">Замены</string>
+    <string name="timetable_monday">Понедельник</string>
+    <string name="timetable_tuesday">Вторник</string>
+    <string name="timetable_wednesday">Среда</string>
+    <string name="timetable_thursday">Четверг</string>
+    <string name="timetable_friday">Пятница</string>
 
 
-    <string name="calls_type_to_lesson">To lesson</string>
-    <string name="calls_type_from_lesson">From lesson</string>
-    <string name="calls_type_to_lunch">To lunch</string>
+    <string name="calls_type_to_lesson">На пару</string>
+    <string name="calls_type_from_lesson">На перемену</string>
+    <string name="calls_type_to_lunch">На обед</string>
 
-    <string name="nextCallInNine">Next call will be in 9pm</string>
-
+    <!--Строки для расписание звонков-->
+    <string name="nextCallInNine">Звонок в 9:00</string>
+    <string name="nextCallInTomorrow">Следующий звонок завтра в 9:00</string>
+    <string name="nextCallInMonday">Звонок в понедельник в 9:00</string>
+    <string name="nextCall">Следующий звонок в </string>
+    <string name="lunchGroups">Обедают группы</string>
+    <string name="loading_please_wait">Подождите пожалуйста,\nидет загрузка</string>
+    <string name="loadingError">Ошибка загрузки</string>
+    <string name="tryAgain">Повторить попытку</string>
 </resources>

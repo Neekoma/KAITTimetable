@@ -20,9 +20,9 @@ import java.util.Date;
 
 public class Timer extends AsyncTask<Void, String, String> {
 
-    private static final int TIME_FOR_SLEEP = 1000 * 15; // Раз в 15 секунд
-    private static final int FIRST_CALL = 0;
-    private static final int LAST_CALL = 1;
+    private static final int TIME_FOR_SLEEP = 1000 * 8; // Проверка раз в 8 секунд
+    private static final int FIRST_CALL = 0; // Если время до первого звонка
+    private static final int LAST_CALL = 1; // Если время после последнего звонка
     private static final String CALLS_ASSET_FILENAME = "calls_time.json";
 
     private Context mContext;
@@ -47,8 +47,8 @@ public class Timer extends AsyncTask<Void, String, String> {
 
     public void update(){
         Date currentDate = new Date();
-        if(currentDate.getDay() >= 6) {
-            mCallTv.setText("Следующий звонок в понедельник в 9:00");
+        if(currentDate.getDay() == 6 || currentDate.getDay() == 0) {
+            mCallTv.setText(mContext.getString(R.string.nextCallInMonday));
             mGroupsTv.setText("");
             return;
         }
@@ -59,13 +59,13 @@ public class Timer extends AsyncTask<Void, String, String> {
         catch (ParseException e){e.printStackTrace();}
 
         if(checkFirstAndLastCall(currentTime) == FIRST_CALL){
-            mCallTv.setText("Следующий звонок в 9:00");
+            mCallTv.setText(mContext.getString(R.string.nextCallInNine));
             return;
         }
         else if(checkFirstAndLastCall(currentTime) == LAST_CALL)
         {
             if(currentDate.getDay() == 5)
-                mCallTv.setText("Следующий звонок в понедельник в 9:00");
+                mCallTv.setText(mContext.getString(R.string.nextCallInMonday));
             else
                 mCallTv.setText(mContext.getString(R.string.nextCallInNine));
             return;

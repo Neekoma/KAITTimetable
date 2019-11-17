@@ -10,8 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Произошел троллинг"
+        android:fontFamily="sans-serif-thin"
         android:gravity="center"
-        android:textSize="32sp"/>
+        android:text="Coming soon"
+        android:textColor="@android:color/black"
+        android:textSize="32sp" />
 
 </FrameLayout>

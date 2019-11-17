@@ -11,7 +11,7 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.nicholas.timetable.adapters.SectionsPageAdapter;
-import com.nicholas.timetable.viewmodels.TimetableViewModel;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefresh;
 
     private Fragment timetableFragment, replacemantFragment;
-    private TimetableViewModel timetableModel, replacementsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         initPageAdapter(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         initCallsFragment();
-       // firstLoadData();
     }
 
 
@@ -44,19 +42,10 @@ public class MainActivity extends AppCompatActivity {
         swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark));
     }
 
-    private void firstLoadData(){
-      // timetableModel = (TimetableViewModel) timetableFragment;
-       //replacementsModel = (TimetableViewModel) replacemantFragment;
-       timetableModel.load();
-       replacementsModel.load();
-    }
-
     private void initPageAdapter(ViewPager viewPager){
         pageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
         timetableFragment = new TimetableFragment();
         replacemantFragment = new ReplacementFragment();
-      //  timetableModel = (TimetableViewModel) timetableFragment;
-       // replacementsModel = (TimetableViewModel) replacemantFragment;
         pageAdapter.addFragment(timetableFragment, getString(R.string.timetable_tab_title));
         pageAdapter.addFragment(replacemantFragment, getString(R.string.replacements_tab_title));
         viewPager.setAdapter(pageAdapter);
