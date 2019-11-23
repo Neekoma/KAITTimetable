@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface IApiRequests {
-    @GET("posts")
-    Call<List<Group>> getGroups();
+    @GET("groups")
+    Call<String> getGroups();
 
 }

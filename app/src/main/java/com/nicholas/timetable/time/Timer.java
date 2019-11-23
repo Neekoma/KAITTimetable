@@ -18,6 +18,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @version 1.0
+ * @date 21.11.2019
+ */
 public class Timer extends AsyncTask<Void, String, String> {
 
     private static final int TIME_FOR_SLEEP = 1000 * 8; // Проверка раз в 8 секунд
@@ -67,7 +71,7 @@ public class Timer extends AsyncTask<Void, String, String> {
             if(currentDate.getDay() == 5)
                 mCallTv.setText(mContext.getString(R.string.nextCallInMonday));
             else
-                mCallTv.setText(mContext.getString(R.string.nextCallInNine));
+                mCallTv.setText(mContext.getString(R.string.nextCallInTomorrow));
             return;
         }
 
@@ -80,6 +84,12 @@ public class Timer extends AsyncTask<Void, String, String> {
             catch (ParseException e){e.printStackTrace();}
             catch (IndexOutOfBoundsException e1){}
             if(currentTime.compareTo(date1) == 1 && currentTime.compareTo(date2) == -1 || currentTime.compareTo(date2) == 0){
+                if(currentTime.compareTo(date2) == 0)
+                {
+                    mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 2).getTime(), pairs.get(i + 2).getType()));
+                    mGroupsTv.setText(String.format("Сейчас обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
+                    break;
+                }
                 mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
