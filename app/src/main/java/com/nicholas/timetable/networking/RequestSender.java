@@ -1,7 +1,6 @@
 package com.nicholas.timetable.networking;
 
 import com.nicholas.timetable.JsonHandler.Handler;
-import com.nicholas.timetable.viewmodels.ReplacementsViewModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;

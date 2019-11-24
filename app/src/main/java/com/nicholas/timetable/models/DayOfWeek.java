@@ -1,21 +1,21 @@
 package com.nicholas.timetable.models;
-import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DayOfWeek {
 
     private String dayName;
-    @SerializedName("number")
-    private int number;
-    @SerializedName("type")
-    private int type;
-    @SerializedName("lessons")
-    private List<Lesson> lessons;
+    private List<Pair> pairs;
 
+    public DayOfWeek(){
+        pairs = new ArrayList<>();
+    }
 
     public void setDayName(String dayName){this.dayName = dayName;}
     public String getDayName(){return dayName;}
-    public List<Lesson> getLessons(){return lessons;}
+    public void setPairs(List<Pair> pairs){this.pairs = pairs;}
+    public List<Pair> getPairs(){return pairs;}
+
 
 }

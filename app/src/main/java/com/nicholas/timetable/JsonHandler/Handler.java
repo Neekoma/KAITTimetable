@@ -7,10 +7,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.nicholas.timetable.models.DayOfWeek;
 import com.nicholas.timetable.models.Lesson;
-import com.nicholas.timetable.models.Timetable;
+import com.nicholas.timetable.models.Pair;
 
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.JSONException;
 
 import java.lang.reflect.Type;
@@ -18,12 +18,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 public class Handler {
     private static final String[] groupsName = {"П-311"};
     private static final String[] daysName = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница"};
-    private HashMap<String, List<DayOfWeek>> groups; // <имя группы, расписание>
+    private Map<String, List<DayOfWeek>> groups; // <имя группы, расписание>
 
 
     public Handler(){
@@ -32,24 +32,23 @@ public class Handler {
 
     public void setGroups(String jsonString){
         try {
-            JSONObject object = new JSONObject(jsonString); // Получить глобальный json-objeca
-            Iterator<String> globalObjectKeys = object.keys(); // Получить список ключей каждой группы (П-311, ИСП-221)
-            while(globalObjectKeys.hasNext()){
-                int dayCounter = 0;
+            Gson gson = new Gson();
+            JSONObject globalObject = new JSONObject(jsonString);
+            Iterator<String> groupsKeys = globalObject.keys();
+            while(groupsKeys.hasNext()){
                 List<DayOfWeek> days = new ArrayList<>();
-                String groupName = globalObjectKeys.next();
-                JSONObject groupObject = object.getJSONObject(groupName);
-                Iterator<String> groupKeys = groupObject.keys(); // Получить список ключей каждого дня у каждой группы (понедельник, вторник)
-                while(groupKeys.hasNext()){
+                String groupName = groupsKeys.next();
+                Iterator<String> groupDaysKeys = globalObject.getJSONObject(groupName).keys();
+                while(groupDaysKeys.hasNext()){
                     DayOfWeek dayOfWeek = new DayOfWeek();
-                    dayOfWeek.setDayName(groupKeys.next());
-                    JSONArray daysArray = groupObject.getJSONArray(dayOfWeek.getDayName());
-                    Gson gson = new Gson();
-                    Type type = new TypeToken<List<DayOfWeek>>(){}.getType();
-                    List<DayOfWeek> da = gson.fromJson(daysArray.toString(), type);
-                    da.get(0).setDayName(daysName[dayCounter]);
-                    days.add(da.get(0));
-                    dayCounter++;
+                    dayOfWeek.setDayName(groupDaysKeys.next());
+                    JSONArray dayArray = globalObject.getJSONObject(groupName).getJSONArray(dayOfWeek.getDayName());
+                    for(int i = 0; i < dayArray.length(); i++){
+                        JSONObject o = dayArray.getJSONObject(i);
+                        Type type = new TypeToken<Pair>(){}.getType();
+                        dayOfWeek.getPairs().add((Pair)gson.fromJson(o.toString(), type));
+                    }
+                    days.add(dayOfWeek);
                 }
                 groups.put(groupName, days);
             }
@@ -58,20 +57,23 @@ public class Handler {
         catch (JSONException e){
             e.printStackTrace();
         }
-    printGroupsInLog();
+        printGroups();
     }
+    private void printGroups(){
+        for(Map.Entry<String, List<DayOfWeek>> entry : groups.entrySet()){
+            Log.d("JSON", entry.getKey());
 
-    private void printGroupsInLog(){
-        Set<String> keySet = groups.keySet();
-        for(String i : keySet){
-            Log.d("JSON", i);
-            List<DayOfWeek> day = groups.get(i);
-            for(DayOfWeek j : day){
-                Log.d("JSON", j.getDayName());
-                Log.d("JSON", j.getLessons().get(0).getName());
+            for(DayOfWeek i : entry.getValue()){
+                Log.d("JSON", i.getDayName());
+                for(Pair j : i.getPairs()){
+                    for(Lesson k : j.lessons){
+                        Log.d("JSON", Integer.toString(j.number) +" " + k.getName());
+                    }
+                }
             }
         }
 
     }
+
 
 }

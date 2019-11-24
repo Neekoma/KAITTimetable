@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.nicholas.timetable.networking.RequestSender;
+
 
 public class TimetableFragment extends Fragment {
 
@@ -19,6 +21,7 @@ public class TimetableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
+        RequestSender.getInstance().update();
         return view;
     }
 

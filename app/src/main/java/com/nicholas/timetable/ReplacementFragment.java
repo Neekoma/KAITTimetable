@@ -26,7 +26,6 @@ public class ReplacementFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        RequestSender.getInstance().update();
         return inflater.inflate(R.layout.fragment_replacement, container, false);
 
     }
