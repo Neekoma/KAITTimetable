@@ -1,7 +1,10 @@
 package com.nicholas.timetable.networking;
 
+import com.nicholas.timetable.viewmodels.FragmentDialog;
+
+
 public interface Updateable {
 
-    public boolean update();
+   void update(FragmentDialog fragment);
 
 }

@@ -30,7 +30,8 @@ public class Handler {
         groups = new HashMap<>();
     }
 
-    public void setGroups(String jsonString){
+    public String setGroups(String jsonString){
+        String result = "";
         try {
             Gson gson = new Gson();
             JSONObject globalObject = new JSONObject(jsonString);
@@ -53,27 +54,28 @@ public class Handler {
                 groups.put(groupName, days);
             }
 
+            for(Map.Entry<String, List<DayOfWeek>> entry: groups.entrySet()){
+                result+= entry.getKey() + "\n";
+                for(DayOfWeek day : entry.getValue()){
+                    result+= day.getDayName() + "\n";
+                    for(Pair pair : day.getPairs()){
+                        result+= "Пара № " + pair.number + "\n";
+                        result+= "Занятия: " + "\n";
+                        for(Lesson i : pair.lessons){
+                            result+= i.getName() + "\n";
+                        }
+                    }
+
+                }
+
+            }
         }
         catch (JSONException e){
             e.printStackTrace();
-        }
-        printGroups();
-    }
-    private void printGroups(){
-        for(Map.Entry<String, List<DayOfWeek>> entry : groups.entrySet()){
-            Log.d("JSON", entry.getKey());
-
-            for(DayOfWeek i : entry.getValue()){
-                Log.d("JSON", i.getDayName());
-                for(Pair j : i.getPairs()){
-                    for(Lesson k : j.lessons){
-                        Log.d("JSON", Integer.toString(j.number) +" " + k.getName());
-                    }
-                }
-            }
+            return null;
         }
 
+        return result;
+
     }
-
-
 }
