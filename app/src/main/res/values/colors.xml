@@ -7,6 +7,6 @@
     <color name="windowBackground">#FFF</color>
     <color name="timerTextColor">#FFF</color>
     <color name="blueButton">#03A9F4</color>
-
+    <color name="colorGray">#747474</color>
     <color name="blackText">#000</color>
 </resources>

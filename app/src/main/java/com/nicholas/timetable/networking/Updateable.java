@@ -5,6 +5,6 @@ import com.nicholas.timetable.viewmodels.FragmentDialog;
 
 public interface Updateable {
 
-   void update(FragmentDialog fragment);
+   void update();
 
 }
