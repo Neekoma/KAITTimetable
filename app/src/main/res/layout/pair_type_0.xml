@@ -7,8 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <include layout="@layout/pair_number"/>
-    <include layout="@layout/pair_body_one"/>
-    <include layout="@layout/pair_body_one_room"/>
+    <include layout="@layout/pair_body_type0"/>
+    <include layout="@layout/pair_body_type0_room"/>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
