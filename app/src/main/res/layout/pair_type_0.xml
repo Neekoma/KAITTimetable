@@ -9,8 +9,10 @@
         android:layout_height="match_parent">
 
     <include layout="@layout/pair_number"/>
-    <include layout="@layout/pair_body_type0"/>
-    <include layout="@layout/pair_body_type0_room"/>
+
+        <include layout="@layout/pair_body_type0" />
+
+        <include layout="@layout/pair_body_type0_room"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

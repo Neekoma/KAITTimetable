@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Handler {
-    private static final String[] groupsName = {"П-311"};
-    private static final String[] daysName = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница"};
+
     private Map<String, List<DayOfWeek>> groups; // <имя группы, расписание>
 
 
@@ -30,7 +29,7 @@ public class Handler {
         groups = new HashMap<>();
     }
 
-    public String setGroups(String jsonString){
+    public void setGroups(String jsonString){
         String result = "";
         try {
             Gson gson = new Gson();
@@ -53,29 +52,9 @@ public class Handler {
                 }
                 groups.put(groupName, days);
             }
-
-            for(Map.Entry<String, List<DayOfWeek>> entry: groups.entrySet()){
-                result+= entry.getKey() + "\n";
-                for(DayOfWeek day : entry.getValue()){
-                    result+= day.getDayName() + "\n";
-                    for(Pair pair : day.getPairs()){
-                        result+= "Пара № " + pair.number + "\n";
-                        result+= "Занятия: " + "\n";
-                        for(Lesson i : pair.lessons){
-                            result+= i.getName() + "\n";
-                        }
-                    }
-
-                }
-
-            }
         }
         catch (JSONException e){
             e.printStackTrace();
-            return null;
         }
-
-        return result;
-
     }
 }
