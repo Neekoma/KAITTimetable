@@ -9,10 +9,11 @@
         android:id="@+id/pair_body_one_room_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:style="@style/timetableInfoStyle"
+        style="@style/timetableInfoStyle"
         android:textAlignment="center"
         android:gravity="center"
-        tools:text="207"/>
+        tools:text="207"
+        android:text="207"/>
 
 
 

@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +19,9 @@ import com.nicholas.timetable.viewmodels.FragmentDialog;
 public class TimetableFragment extends Fragment implements FragmentDialog {
 
     private static final String TAG = "TimetableFragment";
+    private LinearLayout tableContainer;
 
-    private RecyclerView timetableRecyclerView;
+   // private RecyclerView timetableRecyclerView;
 
 
     private Context context;
@@ -26,7 +29,10 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
-        timetableRecyclerView = view.findViewById(R.id.timetableRecyclerView);
+        tableContainer = view.findViewById(R.id.tableContainer);
+        View testTableModel = inflater.inflate(R.layout.pair_type_0, tableContainer, false);
+        tableContainer.addView(testTableModel);
+       // timetableRecyclerView = view.findViewById(R.id.timetableRecyclerView);
         context = view.getContext();
         return view;
     }

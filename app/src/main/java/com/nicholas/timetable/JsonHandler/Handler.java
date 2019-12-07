@@ -1,18 +1,12 @@
 package com.nicholas.timetable.JsonHandler;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.nicholas.timetable.models.DayOfWeek;
-import com.nicholas.timetable.models.Lesson;
 import com.nicholas.timetable.models.Pair;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;

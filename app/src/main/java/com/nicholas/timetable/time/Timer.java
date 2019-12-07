@@ -68,10 +68,10 @@ public class Timer extends AsyncTask<Void, String, String> {
         }
         else if(checkFirstAndLastCall(currentTime) == LAST_CALL)
         {
-            if(currentDate.getDay() == 5)
+            if(currentDate.getDay() >= 5) // Если сегодня пятница или суббота
                 mCallTv.setText(mContext.getString(R.string.nextCallInMonday));
             else
-                mCallTv.setText(mContext.getString(R.string.nextCallInTomorrow));
+                mCallTv.setText(mContext.getString(R.string.nextCallInTomorrow)); // Если сегодня будний день или воскресенье
             return;
         }
 
