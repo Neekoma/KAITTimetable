@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_weight="3"
+    android:layout_height="110dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!--Текстовые поля-->
+    <!---->
+    <!---->
+    <!---->
+    <!--Нечетная неделя-->
+
+    <!--Подгруппа 1-->
+
+    <TextView
+        android:id="@+id/nechetnaya_pair_body_type2_subgroup1_tv"
+        style="@style/timetableInfoStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="Model of TextView1\nПодгруппа 1"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Model of TextView\nПодгруппа 1" />
+
+    <!--Подгруппа 2-->
+
+    <TextView
+        android:id="@+id/nechetnaya_pair_body_type2_subgroup2_tv"
+        style="@style/timetableInfoStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="Model of TextView2\nПодгруппа 2"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Model of TextView\nПодгруппа 2" />
+
+    <!--Четная неделя-->
+    <!--Подгруппа 1-->
+    <TextView
+        android:id="@+id/chetnaya_pair_body_type2_subgroup1_tv"
+        style="@style/timetableInfoStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4"
+        tools:text="Model of TextView 3\nПодгруппа 1"
+        android:text="Model of TextView\nПодгруппа 1"/>
+
+    <!--Подгруппа 2-->
+
+    <TextView
+        android:id="@+id/chetnaya_pair_body_type2_subgroup2_tv"
+        style="@style/timetableInfoStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="@+id/view4"
+        tools:text="Model of TextView 4\nПодгруппа 2"
+        android:text="Model of TextView\nПодгруппа 2"/>
+
+    <!--Разделительные полосы -->
+    <!---->
+    <!---->
+    <!---->
+    <!-- Горизонтальная -->
+
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--Вертикальная 1 (разделяет подгруппы)-->
+    <View
+        android:id="@+id/view7"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--Вертикальная 2 (разделяет четную/нечетную неделю)-->
+
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

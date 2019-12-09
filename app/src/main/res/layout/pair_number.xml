@@ -44,6 +44,8 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
+        <!--Разделительные полосы-->
+        <!-- Вертикальная 1 -->
         <View
             android:id="@+id/view2"
             android:layout_width="1dp"
@@ -53,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/pairNumber"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <!-- Вертикальная 2 -->
         <View
             android:id="@+id/view3"
             android:layout_width="1dp"
@@ -62,7 +64,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <!--Горизонтальная-->
         <View
             android:id="@+id/view"
             android:layout_width="0dp"
@@ -72,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/view2"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.504" />
+            app:layout_constraintVertical_bias="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

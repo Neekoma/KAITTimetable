@@ -29,9 +29,16 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
+        //TODO: После зевершения создания тестовых моделей, удалить их
         tableContainer = view.findViewById(R.id.tableContainer);
-        View testTableModel = inflater.inflate(R.layout.pair_type_0, tableContainer, false);
-        tableContainer.addView(testTableModel);
+        View testTableModelType0 = inflater.inflate(R.layout.pair_type_0, tableContainer, false);
+        View testTableModelType1 = inflater.inflate(R.layout.pair_type_1, tableContainer, false);
+        View testTableModelType2 = inflater.inflate(R.layout.pair_type_2, tableContainer, false);
+        View testTableModelType3 = inflater.inflate(R.layout.pair_type_3, tableContainer, false);
+        tableContainer.addView(testTableModelType0);
+        tableContainer.addView(testTableModelType1);
+        tableContainer.addView(testTableModelType2);
+        tableContainer.addView(testTableModelType3);
        // timetableRecyclerView = view.findViewById(R.id.timetableRecyclerView);
         context = view.getContext();
         return view;

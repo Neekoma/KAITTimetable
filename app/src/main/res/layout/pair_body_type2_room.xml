@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="55dp"
+    android:layout_height="110dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_weight="0"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Текстовые поля-->
+        <!--Нечетная неделя-->
+        <!--Подгруппа 1-->
+        <TextView
+            android:id="@+id/nechetnaya_pair_body_type2_subgroup1_room_tv"
+            style="@style/timetableInfoStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toStartOf="@+id/view8"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="405"
+            android:text="405"/>
+        <!--Подгруппа 2-->
+
+        <TextView
+            android:id="@+id/nechetnaya_pair_body_type2_subgroup2_room_tv"
+            style="@style/timetableInfoStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nechetnaya_pair_body_type2_subgroup1_room_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="311"
+            android:text="311"/>
+
+        <!--Четная неделя-->
+        <!--Подгруппа 1-->
+        <TextView
+            android:id="@+id/chetnaya_pair_body_type2_subgroup1_room_tv"
+            style="@style/timetableInfoStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nechetnaya_pair_body_type2_subgroup1_room_tv"
+            tools:text="228"
+            android:text="666"/>
+
+        <!--Подгруппа 2-->
+        <TextView
+            android:id="@+id/chetnaya_pair_body2_subgroup2_room_tv"
+            style="@style/timetableInfoStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="666"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chetnaya_pair_body_type2_subgroup1_room_tv"
+            app:layout_constraintTop_toBottomOf="@+id/nechetnaya_pair_body_type2_subgroup2_room_tv"
+            tools:text="666" />
+
+        <!--Разделительные полосы-->
+        <!--Горизонтальная (разделяет на четную/нечетную неделю-->
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--Вертикальная (разделяет подгруппы)-->
+        <View
+            android:id="@+id/view8"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/view5"
+            app:layout_constraintStart_toStartOf="@+id/view5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

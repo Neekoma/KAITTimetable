@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Layout для пары без разделения на подгруппы и четные/нечетные недели-->
+<?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:elevation="2dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,9 +14,8 @@
 
         <include layout="@layout/pair_number" />
 
-        <include layout="@layout/pair_body_type0" />
+        <include layout="@layout/pair_body_type2" />
 
-        <include layout="@layout/pair_body_type0_room" />
-
+        <include layout="@layout/pair_body_type2_room" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

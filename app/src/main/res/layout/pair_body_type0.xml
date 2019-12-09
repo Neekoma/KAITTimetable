@@ -13,8 +13,8 @@
         android:gravity="center"
         style="@style/timetableInfoStyle"
         android:textAlignment="center"
-        tools:text="А пары-то не будит азазза\nЗатролил(ЗЫ Задеба - адепт мелкомягких)"
-        android:text="А пары-то не будит азазза\nЗатролил(ЗЫ Задеба - адепт мелкомягких)"/>
+        tools:text="А пары-то не будит азазза\nЗатролил"
+        android:text="А пары-то не будит азазза\nЗатролил"/>
 
     <View
         android:layout_width="1dp"

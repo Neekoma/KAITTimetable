@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Расписание КАИТ 20</string>
+    <string name="app_name">Расписание ШАРАГА</string>
 
     <string name="timetable_tab_title">Расписание</string>
     <string name="replacements_tab_title">Замены</string>
