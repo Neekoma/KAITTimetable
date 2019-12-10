@@ -6,15 +6,80 @@
     tools:context=".fragments.HomeFragment">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/yandex_sans_display_regular"
         android:text="Мой КАИТ"
-        android:textStyle="bold"
-        android:textSize="36sp"
-        android:layout_marginTop="8dp"
         android:textColor="@color/blackText"
-        android:fontFamily="@font/roboto"
-        android:layout_gravity="center"/>
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/userNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/blackText"
+            android:layout_marginTop="16dp"
+            android:textAlignment="center"
+            android:text="@string/str_you_logged_as_guest"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/loginEditText"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:maxHeight="38dp"
+            android:hint="Логин"
+            android:background="@drawable/login_pass_bg"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/blackText"
+            android:textColorHint="@color/blueButton"
+            android:maxLength="20"/>
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:maxHeight="38dp"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:textColorHint="@color/blueButton"
+            android:maxLines="1"
+            android:textColor="@color/blackText"
+            android:hint="Пароль"
+            android:background="@drawable/login_pass_bg"
+            android:padding="6dp"
+            android:maxLength="20"
+            android:inputType="textPassword"/>
+
+
+        <Button
+            android:id="@+id/entrace_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Войти"
+            android:elevation="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:background="@color/blueButton"/>
+    </LinearLayout>
+
+
 
 </FrameLayout>

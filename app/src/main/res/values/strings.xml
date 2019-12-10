@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Расписание КАИТ 20</string>
+    <string name="app_name">Мой КАИТ</string>
 
     <string name="timetable_tab_title">Расписание</string>
     <string name="replacements_tab_title">Замены</string>
@@ -28,4 +28,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_profile">Мой профиль</string>
+    <string name="str_my_group">Моя группа</string>
+    <string name="str_lunch_menu">Меню</string>
+    <string name="str_press">Новости</string>
+    <string name="str_timetable">Расписание</string>
+    <string name="str_you_logged_as_guest">Вы вошли как <b>гость</b>.</string>
+    <string name="str_you_logged_as_tester">Вы вошли как <b>тестировщик</b>.\nВаша группа: <b>П-311</b></string>
 </resources>
