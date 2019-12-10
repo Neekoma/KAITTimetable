@@ -7,7 +7,7 @@
     android:background="@color/windowBackground"
     tools:context=".fragments.TimetableFragment"
     android:orientation="vertical"
-    android:layout_marginBottom="66dp">
+    android:layout_marginBottom="6dp">
 
 
     <androidx.cardview.widget.CardView

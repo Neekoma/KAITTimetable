@@ -13,7 +13,7 @@ public class TimetableViewModel {
     private HashMap<String, List<DayOfWeek>> days;
     private TimetableRecyclerViewAdapter adapter;
     private TimetableViewModel(){
-        adapter = new TimetableRecyclerViewAdapter();
+       // adapter = new TimetableRecyclerViewAdapter();
     }
 
     public static TimetableViewModel getInstance(){

@@ -16,14 +16,15 @@ import java.util.Map;
 
 public class Handler {
 
-    private Map<String, List<DayOfWeek>> groups; // <имя группы, расписание>
+    private HashMap<String, List<DayOfWeek>> groups; // <имя группы, расписание>
 
 
     public Handler(){
         groups = new HashMap<>();
     }
 
-    public void setGroups(String jsonString){
+    public HashMap<String, List<DayOfWeek>> setGroups(String jsonString){
+        groups.clear();
         String result = "";
         try {
             Gson gson = new Gson();
@@ -49,6 +50,8 @@ public class Handler {
         }
         catch (JSONException e){
             e.printStackTrace();
+            return null;
         }
+        return groups;
     }
 }

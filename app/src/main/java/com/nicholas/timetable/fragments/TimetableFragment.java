@@ -3,22 +3,28 @@ package com.nicholas.timetable.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nicholas.timetable.R;
+import com.nicholas.timetable.models.DayOfWeek;
 import com.nicholas.timetable.viewmodels.FragmentDialog;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import com.nicholas.timetable.JsonHandler.Handler;
 
 
 public class TimetableFragment extends Fragment implements FragmentDialog {
@@ -28,31 +34,58 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
 
    // private RecyclerView timetableRecyclerView;
 
+    private HashMap<String, List<DayOfWeek>> groups;
+
 
     private Context context;
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
-
-        //TODO: После зевершения создания тестовых моделей, удалить их
+        groups = new HashMap<>();
         tableContainer = view.findViewById(R.id.tableContainer);
-        View testTableModelType0 = inflater.inflate(R.layout.pair_type_0, tableContainer, false);
-        View testTableModelType1 = inflater.inflate(R.layout.pair_type_1, tableContainer, false);
-        View testTableModelType2 = inflater.inflate(R.layout.pair_type_2, tableContainer, false);
-        View testTableModelType3 = inflater.inflate(R.layout.pair_type_3, tableContainer, false);
-        View testTableModelType4 = inflater.inflate(R.layout.pair_type_4, tableContainer, false);
-        tableContainer.addView(testTableModelType0);
-        tableContainer.addView(testTableModelType1);
-        tableContainer.addView(testTableModelType2);
-        tableContainer.addView(testTableModelType3);
-        tableContainer.addView(testTableModelType4);
-
-       // timetableRecyclerView = view.findViewById(R.id.timetableRecyclerView);
         context = view.getContext();
+        initGroups();
         return view;
     }
 
+
+
+    private void initGroups() {
+        String res= "";
+        Handler handler = new Handler();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(context.getAssets().open("timetable.json")));
+            Scanner scanner = new Scanner(reader);
+            while (scanner.hasNext())
+                res += scanner.next();
+            groups = handler.setGroups(res);
+
+            for(Map.Entry<String, List<DayOfWeek>> entry : groups.entrySet()){
+
+                for(DayOfWeek i : entry.getValue()){
+                    View dayTitleView = getLayoutInflater().inflate(R.layout.day_of_week, tableContainer, false);
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+        }
+        catch (IOException e){
+
+        }
+    }
 
     @Override
     public void showLoadDialog(){
