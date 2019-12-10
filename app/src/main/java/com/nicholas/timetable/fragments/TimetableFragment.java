@@ -1,4 +1,4 @@
-package com.nicholas.timetable;
+package com.nicholas.timetable.fragments;
 
 
 import android.content.Context;
@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nicholas.timetable.R;
 import com.nicholas.timetable.viewmodels.FragmentDialog;
 
 
@@ -31,6 +34,7 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
+
         //TODO: После зевершения создания тестовых моделей, удалить их
         tableContainer = view.findViewById(R.id.tableContainer);
         View testTableModelType0 = inflater.inflate(R.layout.pair_type_0, tableContainer, false);
@@ -43,6 +47,7 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
         tableContainer.addView(testTableModelType2);
         tableContainer.addView(testTableModelType3);
         tableContainer.addView(testTableModelType4);
+
        // timetableRecyclerView = view.findViewById(R.id.timetableRecyclerView);
         context = view.getContext();
         return view;
@@ -61,7 +66,6 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
     public void showSuccessDialog(){
         Log.d("DEBUG", "SUCCESS");
     }
-
 
 
 

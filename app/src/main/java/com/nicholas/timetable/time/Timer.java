@@ -45,6 +45,7 @@ public class Timer extends AsyncTask<Void, String, String> {
     }
 
     public void start(){
+        mGroupsTv.setText("");
         this.execute();
     }
 
@@ -87,7 +88,7 @@ public class Timer extends AsyncTask<Void, String, String> {
                 if(currentTime.compareTo(date2) == 0)
                 {
                     mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 2).getTime(), pairs.get(i + 2).getType()));
-                    mGroupsTv.setText(String.format("Сейчас обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
+                   // mGroupsTv.setText(String.format("Сейчас обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
                     break;
                 }
                 mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));

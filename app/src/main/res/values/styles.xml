@@ -15,4 +15,9 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="timetableElementAttrs">
+        <item name="android:layout_marginBottom">16dp</item>
+
+    </style>
+
 </resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/timetableFragment"
+        android:name="com.nicholas.timetable.fragments.TimetableFragment"
+        android:label="fragment_timetable"
+        tools:layout="@layout/pair_type_0" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nicholas.timetable.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loadFragment"
+            app:destination="@id/loadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadFragment"
+        android:name="com.nicholas.timetable.fragments.LoadFragment"
+        android:label="fragment_load"
+        tools:layout="@layout/fragment_load" >
+        <action
+            android:id="@+id/action_loadFragment_to_timetableFragment"
+            app:destination="@id/timetableFragment" />
+    </fragment>
+</navigation>

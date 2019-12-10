@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#E6E7E7</color>
     <color name="colorPrimaryDark">#FF162E</color>
+    <color name="colorPrimaryDarkWithAlpha">#54FF162E</color>
     <color name="colorAccent">#FF162E</color>
+    <color name="colorWhite">#FFF</color>
     <color name="mainBackground">#F1F4F6</color>
     <color name="windowBackground">#FFF</color>
     <color name="timerTextColor">#FFF</color>

@@ -4,8 +4,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:elevation="2dp">
+    android:elevation="2dp"
+    style="@style/timetableElementAttrs">
 
 
 

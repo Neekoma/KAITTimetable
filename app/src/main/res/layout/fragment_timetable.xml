@@ -5,26 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
-    tools:context=".TimetableFragment"
-    android:orientation="vertical">
-<!--TODO: раскоментировать, когда будут готовы модели таблицы -->
-<!--TODO: пока модели не будут готовы, использовать в качестве тестового layout'a -->
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/timetableRecyclerView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
-
-<!--    </androidx.core.widget.NestedScrollView>-->
+    tools:context=".fragments.TimetableFragment"
+    android:orientation="vertical"
+    android:layout_marginBottom="63dp">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="2dp">
+        android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="Подгруппа 1"
             android:layout_marginLeft="55dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,6 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="Подгруппа 2"
             android:layout_marginRight="55dp"
             app:layout_constraintBottom_toBottomOf="parent"

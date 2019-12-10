@@ -12,22 +12,24 @@
 
         <TextView
             android:id="@+id/pairNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             style="@style/timetableInfoStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="1"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="1"
-            android:text="1"/>
+            tools:text="1"/>
 
 
         <TextView
             style="@style/timetableInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:text="НЧ"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/view"
@@ -35,8 +37,9 @@
 
         <TextView
             style="@style/timetableInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
             android:text="Ч"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,10 +53,10 @@
             android:id="@+id/view2"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
             android:background="@color/colorGray"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/pairNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <!-- Вертикальная 2 -->
         <View
