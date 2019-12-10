@@ -15,13 +15,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="Сосатб!\nПрограммирование отменяется!!!"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Сосатб!\nПрограммирование отменяется!!!" />
+        android:text="(НЧ) Пара с разделением на четные/нечетные недели. Нет разделения на подгруппы"/>
     <!--Для четной недели-->
 
     <TextView
@@ -30,13 +29,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="Visual Studio\nЯндекс бар"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view4"
-        tools:text="Visual Studio\nЯндекс бар" />
+        android:text="(Ч) Пара с разделением на четные/нечетные недели. Нет разделения на подгруппы"/>
 
     <!--Разделительные полосы -->
     <!-- Горизонтальная-->

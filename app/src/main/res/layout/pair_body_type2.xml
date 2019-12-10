@@ -21,12 +21,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="Model of TextView1\nПодгруппа 1"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Model of TextView\nПодгруппа 1" />
+        android:text="Нечетная неделя, подгруппа 1"/>
 
     <!--Подгруппа 2-->
 
@@ -36,12 +35,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="Model of TextView2\nПодгруппа 2"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view7"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Model of TextView\nПодгруппа 2" />
+        android:text="Нечетная неделя, подгруппа 2" />
 
     <!--Четная неделя-->
     <!--Подгруппа 1-->
@@ -55,8 +53,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view4"
-        tools:text="Model of TextView 3\nПодгруппа 1"
-        android:text="Model of TextView\nПодгруппа 1"/>
+        android:text="Четная неделя, подгруппа 1"/>
 
     <!--Подгруппа 2-->
 
@@ -70,8 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view7"
         app:layout_constraintTop_toTopOf="@+id/view4"
-        tools:text="Model of TextView 4\nПодгруппа 2"
-        android:text="Model of TextView\nПодгруппа 2"/>
+        android:text="Четная неделя, подгруппа 2"/>
 
     <!--Разделительные полосы -->
     <!---->

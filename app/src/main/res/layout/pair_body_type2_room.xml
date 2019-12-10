@@ -59,7 +59,7 @@
 
         <!--Подгруппа 2-->
         <TextView
-            android:id="@+id/chetnaya_pair_body2_subgroup2_room_tv"
+            android:id="@+id/chetnaya_pair_body_type2_subgroup2_room_tv"
             style="@style/timetableInfoStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"

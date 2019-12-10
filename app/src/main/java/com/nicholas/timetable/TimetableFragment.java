@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +28,7 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
 
     private Context context;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         //TODO: После зевершения создания тестовых моделей, удалить их
@@ -35,10 +37,12 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
         View testTableModelType1 = inflater.inflate(R.layout.pair_type_1, tableContainer, false);
         View testTableModelType2 = inflater.inflate(R.layout.pair_type_2, tableContainer, false);
         View testTableModelType3 = inflater.inflate(R.layout.pair_type_3, tableContainer, false);
+        View testTableModelType4 = inflater.inflate(R.layout.pair_type_4, tableContainer, false);
         tableContainer.addView(testTableModelType0);
         tableContainer.addView(testTableModelType1);
         tableContainer.addView(testTableModelType2);
         tableContainer.addView(testTableModelType3);
+        tableContainer.addView(testTableModelType4);
        // timetableRecyclerView = view.findViewById(R.id.timetableRecyclerView);
         context = view.getContext();
         return view;
