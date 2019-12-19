@@ -28,19 +28,19 @@
                         android:id="@+id/timerFragment_container"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/colorPrimary"
                         android:fitsSystemWindows="true"
                         app:layout_collapseMode="parallax" />
 
-                    <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/app_toolbar"
-                        style="@style/ToolBarStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        app:layout_collapseMode="pin"
-                        app:subtitleTextColor="@color/colorWhite"
-                        app:title="П-311"
-                        app:titleTextColor="@color/colorWhite" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/app_toolbar"
+                    style="@style/ToolBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
+                    app:layout_collapseMode="pin"
+                    app:subtitleTextColor="@color/colorWhite"
+                    app:title="П-311"
+                    app:titleTextColor="@color/colorWhite" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 

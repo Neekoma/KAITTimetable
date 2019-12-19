@@ -87,11 +87,11 @@ public class Timer extends AsyncTask<Void, String, String> {
             if(currentTime.compareTo(date1) == 1 && currentTime.compareTo(date2) == -1 || currentTime.compareTo(date2) == 0){
                 if(currentTime.compareTo(date2) == 0)
                 {
-                    mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 2).getTime(), pairs.get(i + 2).getType()));
+                    mCallTv.setText(String.format("Следующий звонок в %s\n(%s)", pairs.get(i + 2).getTime(), pairs.get(i + 2).getType()));
                    // mGroupsTv.setText(String.format("Сейчас обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
                     break;
                 }
-                mCallTv.setText(String.format("Следующий звонок в %s (%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
+                mCallTv.setText(String.format("Следующий звонок в %s\n(%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
                 else if(pairs.get(i).getGroupsAtLunch() != null)

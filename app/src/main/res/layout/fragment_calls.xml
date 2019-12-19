@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CallsFragment"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/dom_large"
     android:orientation="vertical">
 
         <TextView
@@ -16,8 +16,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/yandex_sans_display_regular"
+            android:textAlignment="center"
             android:textColor="@color/timerTextColor"
-            android:textSize="16sp"
+            android:textSize="21sp"
             android:textStyle="bold"
             tools:text="Время следующего звонка" />
 
@@ -28,6 +29,7 @@
             android:layout_below="@id/call_time_tv"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:fontFamily="sans-serif-condensed-medium"
             android:textColor="@color/timerTextColor"
             android:textSize="14sp"

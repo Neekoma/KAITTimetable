@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void initWidgets() {
         toolbar = findViewById(R.id.app_toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         setSupportActionBar(toolbar);
         contentContainer = findViewById(R.id.content_fragment_container);
         contentContainer.setNestedScrollingEnabled(true);
