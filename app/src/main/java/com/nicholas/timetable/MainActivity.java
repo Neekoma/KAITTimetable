@@ -1,16 +1,20 @@
 package com.nicholas.timetable;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.nicholas.timetable.fragments.CallsFragment;
+import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
 
 public class MainActivity extends AppCompatActivity{
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity{
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initWidgets();
         initCallsFragment();
+        TimetableViewModel.getInstance().checkoutCacheData("Azaza", getApplicationContext());
     }
 
 
@@ -51,4 +56,15 @@ public class MainActivity extends AppCompatActivity{
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                return true;
+        }
+        return false;
+    }
+
 }

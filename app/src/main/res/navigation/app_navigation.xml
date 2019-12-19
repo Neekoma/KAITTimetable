@@ -10,14 +10,4 @@
         android:name="com.nicholas.timetable.fragments.TimetableFragment"
         android:label="fragment_timetable"
         tools:layout="@layout/pair_type_0" />
-    <fragment
-        android:id="@+id/loadFragment"
-        android:name="com.nicholas.timetable.fragments.LoadFragment"
-        android:label="fragment_load"
-        tools:layout="@layout/fragment_load" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.nicholas.timetable.fragments.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
 </navigation>

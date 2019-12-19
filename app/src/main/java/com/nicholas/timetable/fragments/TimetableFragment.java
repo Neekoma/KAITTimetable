@@ -36,7 +36,6 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
     private static final String TAG = "TimetableFragment";
     private LinearLayout tableContainer;
 
-    // private RecyclerView timetableRecyclerView;
 
     private HashMap<String, List<DayOfWeek>> groups;
 
@@ -49,7 +48,7 @@ public class TimetableFragment extends Fragment implements FragmentDialog {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         groups = new HashMap<>();
         tableContainer = view.findViewById(R.id.tableContainer);
-        context = view.getContext();
+        context = getActivity().getApplicationContext();
         initGroups();
         return view;
     }
