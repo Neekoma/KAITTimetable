@@ -3,29 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/timetableFragment">
 
     <fragment
         android:id="@+id/timetableFragment"
         android:name="com.nicholas.timetable.fragments.TimetableFragment"
         android:label="fragment_timetable"
-        tools:layout="@layout/pair_type_0" >
-        <action
-            android:id="@+id/action_timetableFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.nicholas.timetable.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_timetableFragment"
-            app:destination="@id/timetableFragment" />
-    </fragment>
+        tools:layout="@layout/pair_type_0" />
     <fragment
         android:id="@+id/loadFragment"
         android:name="com.nicholas.timetable.fragments.LoadFragment"
@@ -35,9 +19,5 @@
         android:id="@+id/settingsFragment"
         android:name="com.nicholas.timetable.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
-        <action
-            android:id="@+id/action_settingsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_settings" />
 </navigation>

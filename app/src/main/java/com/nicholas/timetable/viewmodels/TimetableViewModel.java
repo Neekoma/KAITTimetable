@@ -1,30 +1,18 @@
 package com.nicholas.timetable.viewmodels;
 
-import com.nicholas.timetable.adapters.TimetableRecyclerViewAdapter;
+import androidx.lifecycle.ViewModel;
+
 import com.nicholas.timetable.models.DayOfWeek;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class TimetableViewModel {
+public class TimetableViewModel extends ViewModel {
 
-    private static TimetableViewModel instance;
+    private HashMap<String, List<DayOfWeek>> groups;
 
-    private HashMap<String, List<DayOfWeek>> days;
-    private TimetableRecyclerViewAdapter adapter;
-    private TimetableViewModel(){
-       // adapter = new TimetableRecyclerViewAdapter();
-    }
 
-    public static TimetableViewModel getInstance(){
-        if (instance == null)
-            instance = new TimetableViewModel();
-        return instance;
-    }
 
-    public TimetableRecyclerViewAdapter getRecyclerViewAdapter(){
-        return adapter;
-    }
 
 
 }

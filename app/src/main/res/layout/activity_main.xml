@@ -28,8 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@color/colorPrimary"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:layout_scrollFlags="scroll|enterAlways"/>
+                    app:layout_scrollFlags="scroll|snap"/>
                 <fragment
                     android:id="@+id/content_fragment_container"
                     android:name="androidx.navigation.fragment.NavHostFragment"
@@ -37,32 +36,10 @@
                     android:layout_height="match_parent"
                     app:defaultNavHost="true"
                     app:navGraph="@navigation/app_navigation"
-                    tools:layout="@layout/fragment_home" />
+                    tools:layout="@layout/fragment_timetable" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
-            style="@style/Widget.MaterialComponents.BottomAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/colorPrimary"
-            app:fabCradleRoundedCornerRadius="8dp"
-            app:navigationIcon="@drawable/ic_menu_white_24dp">
-
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/home_fab"
-            app:layout_anchor="@id/bottom_app_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorWhite"
-            app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior"
-            android:clickable="true"
-            android:src="@drawable/logo"
-            app:fabSize="normal" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </FrameLayout>
