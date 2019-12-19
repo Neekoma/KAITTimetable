@@ -33,7 +33,7 @@ public class TimetableViewModel{
      * @param newData Новый набор данных, полученный от сервера (json)
      * @return true, если данные совпадают, иначе обновить View
      */
-    public boolean checkoutCacheData(String newData, Context context){
+    public boolean compareWithCacheData(String newData, Context context){
         String savedContent = "";
         try{
             Scanner scanner = new Scanner(context.openFileInput(FILENAME));
@@ -41,7 +41,6 @@ public class TimetableViewModel{
                 savedContent+= scanner.nextLine();
             Toast.makeText(context, Boolean.toString(newData.equals(savedContent)), Toast.LENGTH_SHORT).show();
             return newData.equals(savedContent);
-
         }
         catch (IOException e){
             try {
@@ -61,9 +60,7 @@ public class TimetableViewModel{
         return false;
     }
 
-    private void setGroupsByLocalCache(){
 
-    }
 
     public void setGroups(HashMap<String, List<DayOfWeek>> groups){this.groups = groups;}
     public HashMap<String, List<DayOfWeek>> getGroups(){return groups;}

@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.nicholas.timetable.fragments.CallsFragment;
+import com.nicholas.timetable.networking.RequestSender;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity{
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initWidgets();
         initCallsFragment();
-        TimetableViewModel.getInstance().checkoutCacheData("Azaza", getApplicationContext());
+        RequestSender.getInstance().update();
     }
 
 
