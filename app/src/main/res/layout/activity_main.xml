@@ -4,31 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/windowBackground">
+    android:background="@color/windowBackground"
+    tools:context=".MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/bottom_app_bar_coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="@color/colorPrimaryDark"
+                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleMarginEnd="64dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                    <FrameLayout
+                        android:id="@+id/timerFragment_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:fitsSystemWindows="true"
+                        app:layout_collapseMode="parallax" />
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/app_toolbar"
+                        style="@style/ToolBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:subtitleTextColor="@color/colorWhite"
+                        app:title="П-311"
+                        app:titleTextColor="@color/colorWhite" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/mainNestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <!--Фрагмент с расписанием звонков-->
-                <FrameLayout
-                    android:id="@+id/timerFragment_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/colorPrimary"
-                    app:layout_scrollFlags="scroll|snap"/>
                 <fragment
                     android:id="@+id/content_fragment_container"
                     android:name="androidx.navigation.fragment.NavHostFragment"
