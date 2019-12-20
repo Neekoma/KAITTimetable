@@ -55,14 +55,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <!--Фрагмент с расписанием звонков-->
-                <fragment
+                <FrameLayout
                     android:id="@+id/content_fragment_container"
-                    android:name="androidx.navigation.fragment.NavHostFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:defaultNavHost="true"
-                    app:navGraph="@navigation/app_navigation"
-                    tools:layout="@layout/fragment_timetable" />
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

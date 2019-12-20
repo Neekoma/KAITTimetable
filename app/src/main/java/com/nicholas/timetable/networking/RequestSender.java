@@ -1,5 +1,7 @@
 package com.nicholas.timetable.networking;
 
+import android.util.Log;
+
 import com.nicholas.timetable.JsonHandler.Handler;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
@@ -9,12 +11,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class RequestSender implements Updateable {
+public class RequestSender implements Updateable, Callback<String> {
 
     private static RequestSender instance;
     Retrofit retrofit;
     IApiRequests api;
 
+
+    private Sendable lastSender;
+
+    private static boolean lastUpdateResult = false;
 
     private RequestSender() {
         initNetworkObject();
@@ -40,51 +46,31 @@ public class RequestSender implements Updateable {
     }
 
 
-    public void firstLoadData(){
+    @Override
+    public void update(Sendable sender) {
         Call<String> result = api.getGroups();
-        result.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    Handler jsonHandler = new Handler();
-                    TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                ServerRequestException e = new ServerRequestException();
-            }
-        });
+        result.enqueue(this);
+        lastSender = sender;
     }
-
 
     @Override
-    public void update() {
-        Call<String> result = api.getGroups();
-        result.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    Handler jsonHandler = new Handler();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });
-    }
-
-
-    public class ServerRequestException extends Exception {
-        public ServerRequestException(){
-            super();
+    public void onResponse(Call<String> call, Response<String> response) {
+        if(response.isSuccessful()){
+            Handler jsonHandler = new Handler();
+            TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
+            lastSender.getSendCallbackResult(true);
         }
-
+        else{
+           lastSender.getSendCallbackResult(false);
+        }
     }
 
+    @Override
+    public void onFailure(Call<String> call, Throwable t) {
+        lastSender.getSendCallbackResult(false);
+        Log.d("DEBUG", "onFailure");
+    }
 }
+
+
+

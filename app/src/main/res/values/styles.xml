@@ -13,6 +13,7 @@
         <item name="android:textColor">@color/blackText</item>
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textAlignment">center</item>
+
     </style>
 
     <style name="timetableElementAttrs">

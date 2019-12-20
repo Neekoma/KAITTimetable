@@ -14,24 +14,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.nicholas.timetable.fragments.CallsFragment;
+import com.nicholas.timetable.fragments.TimetableFragment;
 import com.nicholas.timetable.networking.RequestSender;
-import com.nicholas.timetable.viewmodels.TimetableViewModel;
+import com.nicholas.timetable.networking.Sendable;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements Sendable {
 
     private ViewGroup contentContainer;
     private View timerFragmentContainer;
+   // private TimetableFragment timetableFragment;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.load_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        initWidgets();
-        initCallsFragment();
-        RequestSender.getInstance().update();
+        RequestSender.getInstance().update(this);
     }
 
 
@@ -52,6 +52,16 @@ public class MainActivity extends AppCompatActivity{
         transaction.commit();
     }
 
+    private void openTimetableFragment(){
+
+        TimetableFragment timetableFragment = new TimetableFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_fragment_container, timetableFragment);
+        transaction.commit();
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
@@ -68,4 +78,13 @@ public class MainActivity extends AppCompatActivity{
         return false;
     }
 
+    @Override
+    public void getSendCallbackResult(boolean result) {
+        if(result){
+            setContentView(R.layout.activity_main);
+            initWidgets();
+            initCallsFragment();
+            openTimetableFragment();
+        }
+    }
 }

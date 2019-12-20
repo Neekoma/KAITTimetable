@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         style="@style/timetableInfoStyle"
-        android:textAlignment="center"
         android:text="Пара без разделения на подгруппы и четные/нечетные недели"/>
 
     <View
