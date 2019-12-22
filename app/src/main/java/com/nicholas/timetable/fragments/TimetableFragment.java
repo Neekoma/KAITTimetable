@@ -14,6 +14,7 @@ import com.nicholas.timetable.models.DayOfWeek;
 import com.nicholas.timetable.models.Lesson;
 import com.nicholas.timetable.models.Pair;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
@@ -24,8 +25,9 @@ public class TimetableFragment extends Fragment{
     private static final String TAG = "TimetableFragment";
     private LinearLayout tableContainer;
 
-
     private Context context;
+    private Map<String, List<DayOfWeek>> groups;
+
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -33,17 +35,16 @@ public class TimetableFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         tableContainer = view.findViewById(R.id.tableContainer);
         context = getActivity().getApplicationContext();
-        initGroups();
         return view;
     }
 
 
-    public void initGroups() {
+    public void initGroups(LayoutInflater inflater) {
 
-            for (Map.Entry<String, List<DayOfWeek>> entry : TimetableViewModel.getInstance().getGroups().entrySet()) {
+            for (Map.Entry<String, List<DayOfWeek>> entry : groups.entrySet()) {
 
                 for (DayOfWeek i : entry.getValue()) {
-                    View dayTitleView = getLayoutInflater().inflate(R.layout.day_of_week, tableContainer, false);
+                    View dayTitleView = inflater.inflate(R.layout.day_of_week, tableContainer, false);
                     TextView dayTitle = dayTitleView.findViewById(R.id.dayName);
                     dayTitle.setText(i.getDayName());
                     tableContainer.addView(dayTitleView);
@@ -61,7 +62,7 @@ public class TimetableFragment extends Fragment{
 
                         switch (j.type) {
                             case 0:
-                                pairTemplate = getLayoutInflater().inflate(R.layout.pair_type_0, tableContainer, false);
+                                pairTemplate = inflater.inflate(R.layout.pair_type_0, tableContainer, false);
                                 TextView pairNumber = pairTemplate.findViewById(R.id.pairNumber);
                                 pairNumber.setText(Integer.toString(j.number));
                                 TextView pairName = pairTemplate.findViewById(R.id.pair_body_type0_tv);
@@ -71,7 +72,7 @@ public class TimetableFragment extends Fragment{
                                 tableContainer.addView(pairTemplate);
                                 break;
                             case 1:
-                                pairTemplate = getLayoutInflater().inflate(R.layout.pair_type_3, tableContainer, false);
+                                pairTemplate = inflater.inflate(R.layout.pair_type_3, tableContainer, false);
                                 TextView pairNumber2 = pairTemplate.findViewById(R.id.pairNumber);
                                 pairNumber2.setText(Integer.toString(j.number));
                                 TextView pairNameSub1 = pairTemplate.findViewById(R.id.pair_body_type3_subgroup1_tv);
@@ -90,7 +91,7 @@ public class TimetableFragment extends Fragment{
                                 tableContainer.addView(pairTemplate);
                                 break;
                             case 3:
-                                pairTemplate = getLayoutInflater().inflate(R.layout.pair_type_2, tableContainer, false);
+                                pairTemplate = inflater.inflate(R.layout.pair_type_2, tableContainer, false);
                                 TextView pairNumber3 = pairTemplate.findViewById(R.id.pairNumber);
                                 pairNumber3.setText(Integer.toString(j.number));
                                 nechetnayaPairBodySubgroup1Tv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type2_subgroup1_tv);
@@ -132,7 +133,22 @@ public class TimetableFragment extends Fragment{
 
             }
     }
+    public void refresh(String group, LayoutInflater inflater){
+        if(group != "Все группы"){
+            groups = new HashMap<>();
+            groups.put(group, TimetableViewModel.getInstance().getGroups().get(group));
+        }
+        else
+            groups = TimetableViewModel.getInstance().getGroups();
 
+        if(tableContainer != null && tableContainer.getChildCount() > 0)
+            tableContainer.removeAllViews();
 
+        initGroups(inflater);
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

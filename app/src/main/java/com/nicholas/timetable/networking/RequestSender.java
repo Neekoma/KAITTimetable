@@ -60,9 +60,8 @@ public class RequestSender implements Updateable, Callback<String> {
             TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
             lastSender.getSendCallbackResult(true);
         }
-        else{
+        else
            lastSender.getSendCallbackResult(false);
-        }
     }
 
     @Override

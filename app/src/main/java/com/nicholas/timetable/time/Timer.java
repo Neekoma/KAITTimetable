@@ -3,6 +3,7 @@ package com.nicholas.timetable.time;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -29,18 +30,27 @@ public class Timer extends AsyncTask<Void, String, String> {
     private static final int LAST_CALL = 1; // Если время после последнего звонка
     private static final String CALLS_ASSET_FILENAME = "calls_time.json";
 
+
+    private static final String TYPE_TO_LESSON = "На занятие";
+    private static final String TYPE_FROM_LESSON = "На перемену";
+    private static final String TYPE_AT_LUNCH = "На обед";
+    private static final String TYPE_LAST = "Последний";
+
     private Context mContext;
     private TextView mCallTv, mGroupsTv;
     private ArrayList<Pair> pairs;
     private DateFormat dateFormat;
 
 
+    private ViewGroup mContainer;
 
-    public Timer(TextView callTv, TextView groupsTv){
+
+    public Timer(ViewGroup container, TextView callTv, TextView groupsTv){
         mCallTv = callTv;
         mGroupsTv = groupsTv;
         dateFormat = new SimpleDateFormat("HH:mm");
         mContext = callTv.getContext();
+        mContainer = container;
         loadCallsAsset();
     }
 
@@ -77,6 +87,7 @@ public class Timer extends AsyncTask<Void, String, String> {
         }
 
         for(int i = 0; i < pairs.size(); i++){
+            mGroupsTv.setText("");
             Date date1 = null;
             Date date2 = null;
             try{date1 = dateFormat.parse(pairs.get(i).getTime());
@@ -88,10 +99,19 @@ public class Timer extends AsyncTask<Void, String, String> {
                 if(currentTime.compareTo(date2) == 0)
                 {
                     mCallTv.setText(String.format("Следующий звонок в %s\n(%s)", pairs.get(i + 2).getTime(), pairs.get(i + 2).getType()));
-                   // mGroupsTv.setText(String.format("Сейчас обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
                     break;
                 }
                 mCallTv.setText(String.format("Следующий звонок в %s\n(%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
+                // Фоновое изображение (switch не работает)
+                if(pairs.get(i + 1).getType().equals(TYPE_TO_LESSON))
+                    mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.ucheb));
+                else if(pairs.get(i + 1).getType().equals(TYPE_FROM_LESSON))
+                    mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.shkol));
+                else if(pairs.get(i + 1).getType().equals(TYPE_AT_LUNCH))
+                    mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.stol));
+                else if(pairs.get(i + 1).getType().equals(TYPE_LAST))
+                    mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.dom_large));
+                //
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
                 else if(pairs.get(i).getGroupsAtLunch() != null)

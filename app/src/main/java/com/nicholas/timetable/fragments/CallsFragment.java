@@ -33,9 +33,12 @@ public class CallsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calls, container, false);
+        ViewGroup callsContainer = view.findViewById(R.id.callsMainContainer);
         callTv = view.findViewById(R.id.call_time_tv);
+        if(callsContainer == null)
+            Log.d("DEBUG", "azaza");
         groupsTv = view.findViewById(R.id.groups_at_lunch_tv);
-        timer = new Timer(callTv, groupsTv);
+        timer = new Timer(callsContainer, callTv, groupsTv);
         timer.start();
         return view;
     }

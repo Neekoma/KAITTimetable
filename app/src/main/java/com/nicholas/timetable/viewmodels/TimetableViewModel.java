@@ -1,8 +1,12 @@
 package com.nicholas.timetable.viewmodels;
 
+import android.util.Log;
+
+import com.nicholas.timetable.MainActivity;
 import com.nicholas.timetable.models.DayOfWeek;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TimetableViewModel{
 
@@ -15,6 +19,10 @@ public class TimetableViewModel{
 
     private HashMap<String, List<DayOfWeek>> groups;
 
+    private String[] groupNames;
+
+    private String currentGroupName = null;
+
 
     public static TimetableViewModel getInstance(){
         if (instance == null)
@@ -22,39 +30,34 @@ public class TimetableViewModel{
         return instance;
     }
 
-//    public boolean compareWithCacheData(String newData, Context context){
-//        String savedContent = "";
-//        try{
-//            Scanner scanner = new Scanner(context.openFileInput(FILENAME));
-//            while(scanner.hasNextLine())
-//                savedContent+= scanner.nextLine();
-//            Toast.makeText(context, Boolean.toString(newData.equals(savedContent)), Toast.LENGTH_SHORT).show();
-//            return newData.equals(savedContent);
-//        }
-//        catch (IOException e){
-//            try {
-//                Toast.makeText(context, "File not found. Creating a new file", Toast.LENGTH_SHORT).show();
-//                OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(FILENAME, Context.MODE_PRIVATE));
-//                writer.write(newData);
-//                writer.flush();
-//                writer.close();
-//            }
-//            catch (FileNotFoundException e1){
-//
-//            }
-//            catch (IOException e2){
-//
-//            }
-//        }
-//        return false;
-//    }
 
 
+    public String[] getGroupNames(){return groupNames;}
+    public void setGroups(HashMap<String, List<DayOfWeek>> groups){
+        this.groups = groups;
+        groupNames = new String[groups.size()];
+        int i = 0;
+        for(Map.Entry<String, List<DayOfWeek>> entry : groups.entrySet()){
+            groupNames[i] = entry.getKey();
+            i++;
+        }
+        //Вывести список групп (имена)
+        for(String j : groupNames)
+            Log.d("DEBUG", j);
 
-    public void setGroups(HashMap<String, List<DayOfWeek>> groups){this.groups = groups;}
+
+    }
     public HashMap<String, List<DayOfWeek>> getGroups(){return groups;}
 
-
+    public void setCurrentGroupName(MainActivity activity, String groupName){
+        currentGroupName = groupName;
+        activity.refreshTimetable();
+    }
+    public String getCurrentGroupName(){
+        if(currentGroupName == null)
+            return "Все группы";
+        return currentGroupName;
+    }
 
 
 
