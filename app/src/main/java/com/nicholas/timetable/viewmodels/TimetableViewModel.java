@@ -2,6 +2,8 @@ package com.nicholas.timetable.viewmodels;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.nicholas.timetable.MainActivity;
 import com.nicholas.timetable.models.DayOfWeek;
 import java.util.HashMap;
@@ -18,6 +20,9 @@ public class TimetableViewModel{
     private TimetableViewModel(){}
 
     private HashMap<String, List<DayOfWeek>> groups;
+
+    private HashMap<String, List<DayOfWeek>> selectedGroup;
+
 
     private String[] groupNames;
 
@@ -59,7 +64,16 @@ public class TimetableViewModel{
         return currentGroupName;
     }
 
+    public HashMap<String, List<DayOfWeek>> getSelectedGroup(){return selectedGroup;}
 
+    public void setSelectedGroup(String group){
+        if(group != "Все группы"){
+            selectedGroup= new HashMap<>();
+            selectedGroup.put(group, groups.get(group));
+        }
+        else
+            selectedGroup = getGroups();
+    }
 
 
 

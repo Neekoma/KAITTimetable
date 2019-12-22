@@ -53,7 +53,7 @@
                     android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
                     app:layout_collapseMode="pin"
                     app:subtitleTextColor="@color/colorWhite"
-                    app:title="П-311"
+                    app:title="Все группы"
                     app:titleTextColor="@color/colorWhite" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -73,30 +73,17 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </FrameLayout>
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/loadDialogContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical"
+            android:visibility="visible"
             tools:visibility="gone">
 
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="32dp"
-                android:text="@string/loading_please_wait"
-                android:textAlignment="center"
-                android:textColor="@color/blackText"
-                android:textSize="24sp" />
-        </LinearLayout>
+            <include layout="@layout/load_layout"/>
+        </FrameLayout>
 
 </FrameLayout>

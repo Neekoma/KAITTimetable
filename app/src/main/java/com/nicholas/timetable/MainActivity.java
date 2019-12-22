@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements Sendable {
     private TimetableFragment timetableFragment;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements Sendable {
         timetableFragment = new TimetableFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_fragment_container, timetableFragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -117,9 +117,9 @@ public class MainActivity extends AppCompatActivity implements Sendable {
     public void getSendCallbackResult(boolean result) {
         if(result){
             loadingDialogContainer.setVisibility(View.GONE);
-            loadedDataContainer.setVisibility(View.VISIBLE);
             openTimetableFragment();
-            refreshTimetable();
+            TimetableViewModel.getInstance().setSelectedGroup("Все группы");
+            loadedDataContainer.setVisibility(View.VISIBLE);
         }
     }
 
@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements Sendable {
     public void refreshTimetable(){
         String newGroup = TimetableViewModel.getInstance().getCurrentGroupName();
         collapsingToolbarLayout.setTitle(newGroup);
-        timetableFragment.refresh(newGroup, getLayoutInflater());
+        TimetableViewModel.getInstance().setSelectedGroup(TimetableViewModel.getInstance().getCurrentGroupName());
+        openTimetableFragment();
     }
 
 }

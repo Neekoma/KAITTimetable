@@ -20,7 +20,6 @@ public class RequestSender implements Updateable, Callback<String> {
 
     private Sendable lastSender;
 
-    private static boolean lastUpdateResult = false;
 
     private RequestSender() {
         initNetworkObject();
