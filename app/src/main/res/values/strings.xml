@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ШАРАГА</string>
+    <string name="app_name">КАИТ 20 Расписание</string>
 
     <string name="timetable_tab_title">Расписание</string>
     <string name="replacements_tab_title">Замены</string>
@@ -51,4 +51,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="loading_error_dialog">Во время загрузки данных с сервера произошла ошибка, а на устройстве отсутствуют резервные копии данных</string>
+    <string name="str_refresh">Обновить</string>
 </resources>

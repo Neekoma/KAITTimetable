@@ -56,23 +56,18 @@ public class TimetableViewModel{
 
     public void setCurrentGroupName(MainActivity activity, String groupName){
         currentGroupName = groupName;
-        activity.refreshTimetable();
     }
     public String getCurrentGroupName(){
-        if(currentGroupName == null)
-            return "Все группы";
         return currentGroupName;
     }
 
     public HashMap<String, List<DayOfWeek>> getSelectedGroup(){return selectedGroup;}
 
     public void setSelectedGroup(String group){
-        if(group != "Все группы"){
-            selectedGroup= new HashMap<>();
+        if(!group.equals(MainActivity.SELECT_GROUP_IN_PREFERENCES)){
+            selectedGroup = new HashMap<>();
             selectedGroup.put(group, groups.get(group));
         }
-        else
-            selectedGroup = getGroups();
     }
 
 

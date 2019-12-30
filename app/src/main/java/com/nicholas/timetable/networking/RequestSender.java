@@ -3,6 +3,7 @@ package com.nicholas.timetable.networking;
 import android.util.Log;
 
 import com.nicholas.timetable.JsonHandler.Handler;
+import com.nicholas.timetable.TimetableBinder;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
 import retrofit2.Call;
@@ -19,11 +20,13 @@ public class RequestSender implements Updateable, Callback<String> {
 
 
     private Sendable lastSender;
-
+    private String lastJson;
 
     private RequestSender() {
         initNetworkObject();
     }
+
+
 
     public static RequestSender getInstance() {
         if (instance == null)
@@ -57,6 +60,7 @@ public class RequestSender implements Updateable, Callback<String> {
         if(response.isSuccessful()){
             Handler jsonHandler = new Handler();
             TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
+            lastJson = response.body();
             lastSender.getSendCallbackResult(true);
         }
         else
@@ -68,6 +72,7 @@ public class RequestSender implements Updateable, Callback<String> {
         lastSender.getSendCallbackResult(false);
         Log.d("DEBUG", "onFailure");
     }
+    public String getLastJson(){return lastJson;}
 }
 
 

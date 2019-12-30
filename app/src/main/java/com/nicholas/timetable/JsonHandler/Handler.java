@@ -25,7 +25,7 @@ public class Handler {
 
     public HashMap<String, List<DayOfWeek>> setGroups(String jsonString){
         groups.clear();
-        String result = "";
+       // String result = "";
         try {
             Gson gson = new Gson();
             JSONObject globalObject = new JSONObject(jsonString);
