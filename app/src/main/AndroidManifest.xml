@@ -3,9 +3,11 @@
     package="com.nicholas.timetable">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_kait_launcher"
         android:label="@string/app_name"
@@ -20,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".TimetableNotificationService"/>
+
+        <receiver android:name=".NotificationDismissedReceiver"
+            android:exported="false"/>
 
         <meta-data
             android:name="preloaded_fonts"

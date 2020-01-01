@@ -21,10 +21,9 @@ public class TimetableBinder {
     private static final String CACHE_FILENAME = "cache.json";
 
     /**
-     *
-     * @param context
-     * @param newJson json расписания, которое только что пришло с сервера
-     * @return true, если расписания совпадают (ничего не делать) false, если расписание с сервера отличается от сохраненного
+     * @param        newJson json расписания, которое только что пришло с сервера
+     * @return      true, если расписания совпадают (ничего не делать)
+     *              false, если расписание с сервера отличается от сохраненного
      */
     public static boolean compareTimetable(Context context, String newJson){
        try(BufferedReader reader = new BufferedReader(new InputStreamReader(context.openFileInput(CACHE_FILENAME)))){
@@ -46,6 +45,10 @@ public class TimetableBinder {
         return false;
     }
 
+    /**
+     * Записать новый файл с расписание в память устройства
+     * @param newJson новая строка в формате json, полученная с сервера
+     */
     public static void writeNewTimetableJson(Context context, String newJson){
         try(OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(CACHE_FILENAME, Context.MODE_PRIVATE))){
             writer.write(newJson.trim());
@@ -55,6 +58,11 @@ public class TimetableBinder {
         }
     }
 
+    /**
+     * Получить сохраненный файл с расписанием в формате json
+     * @return      null, если файла нет
+     *              json строка, если файл имеется
+     */
     public static String getCacheJsonFile(Context context){
         String result = null;
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(context.openFileInput(CACHE_FILENAME)))){
@@ -72,14 +80,15 @@ public class TimetableBinder {
         return result;
     }
 
+    /**
+     * @return      true, если файл есть
+     *              false, если файла нет
+     */
     public static boolean haveSave(Context context){
         try(InputStream inputStream = context.openFileInput(CACHE_FILENAME)){
             return true;
         }
-        catch(FileNotFoundException e){
-            return false;
-        }
-        catch (IOException e1){
+        catch(Exception e){
             return false;
         }
     }

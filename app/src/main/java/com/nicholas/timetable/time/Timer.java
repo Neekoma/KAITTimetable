@@ -125,15 +125,15 @@ public class Timer extends AsyncTask<Void, String, String> {
     }
     private int checkFirstAndLastCall(Date currentDate){
         Date firstCall = null;
-        Date lastcall = null;
+        Date lastCall = null;
         try {
             firstCall = dateFormat.parse("9:00");
-            lastcall = dateFormat.parse("18:00");
+            lastCall = dateFormat.parse("18:00");
         }
         catch (ParseException e){}
-        if(currentDate.compareTo(firstCall) == -1)
+        if(currentDate.compareTo(firstCall) == -1 || currentDate.compareTo(firstCall) == 0)
             return FIRST_CALL;
-        else if(currentDate.compareTo(lastcall) == 1)
+        else if(currentDate.compareTo(lastCall) == 1 || currentDate.compareTo(lastCall) == 0)
             return LAST_CALL;
         return -1;
     }

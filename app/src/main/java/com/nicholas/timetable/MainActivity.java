@@ -1,11 +1,10 @@
 package com.nicholas.timetable;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,12 +15,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.nicholas.timetable.fragments.CallsFragment;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements Sendable, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements Sendable, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
 
     private ViewGroup loadedDataContainer;
@@ -43,12 +44,15 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
     private ViewGroup loadingErrorDialogContainer;
     private TextView refreshTv;
 
+    private SwipeRefreshLayout swipeRefresh;
 
     private ViewGroup contentContainer;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
     private TimetableFragment timetableFragment;
     private View selectGroupSpinner;
+
+  //  private boolean loaded;
 
 
     private SharedPreferences preferences;
@@ -66,11 +70,17 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
         initWidgets();
         initCallsFragment();
 
+        if(TimetableBinder.haveSave(getApplicationContext())){
+            loadByLocalData();
+            Toast.makeText(this, "Загружено сохраненное расписание", Toast.LENGTH_LONG).show();
+        }
+
         RequestSender.getInstance().update(this);
     }
 
 
     private void initWidgets() {
+        swipeRefresh = findViewById(R.id.swipeToRefresh);
         loadedDataContainer = findViewById(R.id.loadedDataContainer);
         loadingDialogContainer = findViewById(R.id.loadDialogContainer);
         collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
@@ -85,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
         refreshTv.setOnClickListener(this);
         selectGroupSpinner = findViewById(R.id.select_group_spinner);
         contentContainer.setNestedScrollingEnabled(true);
+
+        swipeRefresh.setOnRefreshListener(this);
     }
 
     //Ициализировать фрагмент с расписанием звонков
@@ -146,21 +158,24 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
             loadingDialogContainer.setVisibility(View.GONE);
             refreshTimetable();
             loadedDataContainer.setVisibility(View.VISIBLE);
-            if (TimetableBinder.compareTimetable(getApplicationContext(), RequestSender.getInstance().getLastJson())) {
-                Log.d("DEBUG-2", "Не перезаписано");
-                Log.d("DEBUG-2", RequestSender.getInstance().getLastJson());
-                Log.d("DEBUG-2", TimetableBinder.getCacheJsonFile(getApplicationContext()));
-            }
-            else
-                Log.d("DEBUG-2", "Перезаписано");
+            TimetableBinder.writeNewTimetableJson(getApplicationContext(), RequestSender.getInstance().getLastJson());
+            Toast.makeText(this, "Расписание обновлено", Toast.LENGTH_LONG).show();
+//            if(!loaded) {
+//                startTimetableService();
+//                loaded = true;
+//            }
+
         } else {
             if(TimetableBinder.haveSave(getApplicationContext()))
                 loadByLocalData();
             else{
                 showLoadErrorDialog();
             }
-
         }
+
+        if(swipeRefresh.isRefreshing())
+            swipeRefresh.setRefreshing(false);
+
     }
 
     private void showFragment(){
@@ -169,12 +184,10 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
     }
 
     public void refreshTimetable() {
-        Log.d("DEBUG-1", "refresh timetable " + sharedGroup);
         TimetableViewModel.getInstance().setSelectedGroup(sharedGroup);
         if (TimetableViewModel.getInstance().getGroups().containsKey(sharedGroup) && sharedGroup != SELECT_GROUP_IN_PREFERENCES) {
             collapsingToolbarLayout.setTitle(sharedGroup);
             openTimetableFragment();
-            Log.d("DEBUG", "Дошли до открытия фрагмента");
         } else {
             collapsingToolbarLayout.setTitle(SELECT_GROUP_IN_PREFERENCES); // Выберите группу
             selectGroupSpinner.setVisibility(View.VISIBLE);
@@ -185,7 +198,6 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
         HashMap<String, List<DayOfWeek>> localGroups = TimetableBinder.getLocalGroups(getApplicationContext());
         if (localGroups != null) {
             TimetableViewModel.getInstance().setGroups(localGroups);
-            Log.d("DEBUG", "localGroups!= null");
             TimetableViewModel.getInstance().setGroups(TimetableBinder.getLocalGroups(getApplicationContext()));
             refreshTimetable();
             showFragment();
@@ -215,4 +227,21 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
 
         }
     }
+
+    @Override
+    public void onRefresh() {
+        RequestSender.getInstance().update(this);
+    }
+
+//    private void startTimetableService(){
+//        Intent intent = new Intent(this, TimetableNotificationService.class);
+//        startService(intent);
+//    }
+//
+//    private void stopTimetableService(){
+//        Intent intent = new Intent(this, TimetableNotificationService.class);
+//        startService(intent);
+//    }
+
+
 }

@@ -15,6 +15,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class RequestSender implements Updateable, Callback<String> {
 
     private static RequestSender instance;
+
+    //Изменить при необходимости
+    public static final String SERVER_URL = "http://192.168.1.66:8080/api/";
+
+
     Retrofit retrofit;
     IApiRequests api;
 
@@ -41,7 +46,7 @@ public class RequestSender implements Updateable, Callback<String> {
 
     private void initNetworkObject() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.64:8080/api/")
+                .baseUrl(SERVER_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
         api = retrofit.create(IApiRequests.class);
