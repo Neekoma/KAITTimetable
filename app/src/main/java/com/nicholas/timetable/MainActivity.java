@@ -64,18 +64,23 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         preferences = getSharedPreferences("MY_SHARED", Context.MODE_PRIVATE);
         sharedGroup = preferences.getString("SHARED_GROUP", SELECT_GROUP_IN_PREFERENCES);
         TimetableViewModel.getInstance().setCurrentGroupName(this, sharedGroup);
         initWidgets();
         initCallsFragment();
-
+        /**
+         * Если на устройстве уже есть сохраненное расписание, то загружается именно оно
+         * Иначе отправить запрос на сервер
+         */
         if(TimetableBinder.haveSave(getApplicationContext())){
             loadByLocalData();
             Toast.makeText(this, "Загружено сохраненное расписание", Toast.LENGTH_LONG).show();
         }
+        else
+            RequestSender.getInstance().update(this);
 
-        RequestSender.getInstance().update(this);
     }
 
 

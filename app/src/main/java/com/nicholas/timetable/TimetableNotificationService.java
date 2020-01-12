@@ -14,7 +14,6 @@ import com.nicholas.timetable.networking.RequestSender;
 import com.nicholas.timetable.networking.Sendable;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 

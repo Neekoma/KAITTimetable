@@ -17,7 +17,7 @@ public class RequestSender implements Updateable, Callback<String> {
     private static RequestSender instance;
 
     //Изменить при необходимости
-    public static final String SERVER_URL = "http://192.168.1.66:8080/api/";
+    public static final String SERVER_URL = "http://192.168.1.65:8080/api/";
 
 
     Retrofit retrofit;
