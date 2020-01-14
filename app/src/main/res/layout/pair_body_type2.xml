@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_weight="3"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -19,13 +19,14 @@
         android:id="@+id/nechetnaya_pair_body_type2_subgroup1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Нечетная неделя, подгруппа 2"/>
+        tools:text="Нечетная неделя, подгруппа 2" />
 
     <!--Подгруппа 2-->
 
@@ -33,7 +34,7 @@
         android:id="@+id/nechetnaya_pair_body_type2_subgroup2_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,7 @@
         android:id="@+id/chetnaya_pair_body_type2_subgroup1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view7"
@@ -61,7 +62,7 @@
         android:id="@+id/chetnaya_pair_body_type2_subgroup2_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +89,7 @@
     <View
         android:id="@+id/view7"
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view4"
@@ -100,12 +101,11 @@
     <View
         android:id="@+id/view6"
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

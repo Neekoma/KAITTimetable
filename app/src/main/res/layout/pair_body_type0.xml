@@ -3,25 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_weight="3"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
+    android:minHeight="110dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/pair_body_type0_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
         style="@style/timetableInfoStyle"
-        android:text="Пара без разделения на подгруппы и четные/нечетные недели"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Пара без разделения на подгруппы и четные/нечетные недели"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="1dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="2dp"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/pair_body_type0_tv"
         app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="55dp"
-    android:layout_height="110dp"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_weight="0"
     xmlns:tools="http://schemas.android.com/tools">
@@ -14,7 +14,7 @@
             android:id="@+id/nechetnaya_pair_body_type1_room_tv"
             style="@style/timetableInfoStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="207"

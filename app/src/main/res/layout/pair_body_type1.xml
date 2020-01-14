@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_weight="3"
-    android:layout_height="110dp"
+    android:minHeight="110dp"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -13,28 +14,28 @@
         android:id="@+id/nechetnaya_pair_body_type1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="(НЧ) Пара с разделением на четные/нечетные недели. Нет разделения на подгруппы"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="(НЧ) Пара с разделением на четные/нечетные недели. Нет разделения на подгруппы"/>
+        app:layout_constraintTop_toTopOf="parent" />
     <!--Для четной недели-->
 
     <TextView
         android:id="@+id/chetnaya_pair_body_type1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="(Ч) Пара с разделением на четные/нечетные недели. Нет разделения на подгруппы"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view4"
-        android:text="(Ч) Пара с разделением на четные/нечетные недели. Нет разделения на подгруппы"/>
+        app:layout_constraintTop_toTopOf="@+id/view4" />
 
     <!--Разделительные полосы -->
     <!-- Горизонтальная-->
@@ -44,12 +45,13 @@
         android:layout_height="1dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <!--Вертикальная-->
     <View
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view4"

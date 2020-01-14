@@ -110,7 +110,7 @@ public class Timer extends AsyncTask<Void, String, String> {
                 else if(pairs.get(i + 1).getType().equals(TYPE_AT_LUNCH))
                     mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.stol));
                 else if(pairs.get(i + 1).getType().equals(TYPE_LAST))
-                    mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.dom_large));
+                    mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.time));
                 //
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));

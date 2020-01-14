@@ -17,9 +17,11 @@ import com.nicholas.timetable.models.DayOfWeek;
 import com.nicholas.timetable.models.Lesson;
 import com.nicholas.timetable.models.Pair;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimerTask;
 
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
@@ -28,6 +30,8 @@ public class TimetableFragment extends Fragment {
 
     private static final String TAG = "TimetableFragment";
     private LinearLayout tableContainer;
+    private TextView oddWeekTv;
+
 
     private Context context;
     private Map<String, List<DayOfWeek>> groups;
@@ -41,7 +45,9 @@ public class TimetableFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         this.inflater = inflater;
         tableContainer = view.findViewById(R.id.tableContainer);
+        oddWeekTv = view.findViewById(R.id.oddWeek);
         context = getActivity().getApplicationContext();
+        setOddWeek();
         initGroups();
         return view;
     }
@@ -291,6 +297,15 @@ public class TimetableFragment extends Fragment {
             }
 
         }
+    }
+
+    private void setOddWeek(){
+        Calendar calendar = Calendar.getInstance();
+        int week = calendar.get(Calendar.WEEK_OF_YEAR);
+        if(week % 2 == 0)
+            oddWeekTv.setText("Неделя: четная");
+        else
+            oddWeekTv.setText("Неделя: НЕчетная");
     }
 
     @Override
