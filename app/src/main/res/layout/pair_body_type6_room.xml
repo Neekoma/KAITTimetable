@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="110dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_weight="3">
+    android:layout_width="55dp"
+    android:layout_height="110dp">
 
 
     <TextView
-        android:id="@+id/nechetnaya_pair_body_type6_subgroup1_tv"
+        android:id="@+id/nechetnaya_pair_body_type6_subgroup1_room_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/chetnaya_pair_body_type6_tv"
-        app:layout_constraintEnd_toStartOf="@+id/nechetnaya_pair_body_type6_subgroup2_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/view23"
+        app:layout_constraintEnd_toStartOf="@+id/view23"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="подгруппа 1 нечетная неделя" />
-
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="НЧSB1" />
 
     <TextView
-        android:id="@+id/nechetnaya_pair_body_type6_subgroup2_tv"
+        android:id="@+id/nechetnaya_pair_body_type6_subgroup2_room_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/chetnaya_pair_body_type6_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/view23"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view20"
+        app:layout_constraintStart_toEndOf="@+id/nechetnaya_pair_body_type6_subgroup1_room_tv"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="подгруппа 2 нечетная неделя" />
+        tools:text="НЧSB2" />
 
     <TextView
-        android:id="@+id/chetnaya_pair_body_type6_tv"
+        android:id="@+id/chetnaya_pair_body_type6_room_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -41,36 +42,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view20"
-        tools:text="общаа пара четная неделя" />
+        app:layout_constraintTop_toBottomOf="@+id/view23"
+        tools:text="ТЕХНО" />
 
     <View
-        android:id="@+id/view20"
+        android:id="@+id/view23"
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="@color/colorGray"
-        app:layout_constraintBottom_toTopOf="@+id/view21"
+        app:layout_constraintBottom_toTopOf="@+id/view22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view21"
+        android:id="@+id/view22"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorGray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

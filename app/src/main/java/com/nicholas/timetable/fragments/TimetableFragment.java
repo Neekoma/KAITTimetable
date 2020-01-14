@@ -87,7 +87,7 @@ public class TimetableFragment extends Fragment {
                             pairNumber.setText(Integer.toString(j.number));
                             TextView pairName = pairTemplate.findViewById(R.id.pair_body_type0_tv);
                             TextView pairRoom = pairTemplate.findViewById(R.id.pair_body_type0_room_tv);
-                            pairName.setText(j.lessons.get(0).getName());
+                            pairName.setText(j.lessons.get(0).getName() + "\n\n" + j.lessons.get(0).getTeacher());
                             pairRoom.setText(j.lessons.get(0).getRoom());
                             tableContainer.addView(pairTemplate);
                             break;
@@ -101,10 +101,10 @@ public class TimetableFragment extends Fragment {
                             TextView pairNameSub2Room = pairTemplate.findViewById(R.id.pair_body_type3_subgroup2_room_tv);
                             for (Lesson k : j.lessons) {
                                 if (k.getGroup().equals("1")) {
-                                    pairNameSub1.setText(k.getName());
+                                    pairNameSub1.setText(k.getName() + "\n\n" + k.getTeacher());
                                     pairNameSub1Room.setText(k.getRoom());
                                 } else {
-                                    pairNameSub2.setText(k.getName());
+                                    pairNameSub2.setText(k.getName() + "\n\n" + k.getTeacher());
                                     pairNameSub2Room.setText(k.getRoom());
                                 }
                             }
@@ -120,10 +120,10 @@ public class TimetableFragment extends Fragment {
                             chetnayaPairRoomTv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type1_room_tv);
                             for (Lesson k : j.lessons) {
                                 if (k.getParity().equals(GroupParity.NECHETNAYA.getParityString())) {
-                                    nechetnayaPairTv.setText(k.getName());
+                                    nechetnayaPairTv.setText(k.getName() + "\n\n" + k.getTeacher());
                                     nechetnayaPairRoomTv.setText(k.getRoom());
                                 } else {
-                                    chetnayaPairTv.setText(k.getName());
+                                    chetnayaPairTv.setText(k.getName() + "\n\n" + k.getTeacher());
                                     chetnayaPairRoomTv.setText(k.getRoom());
                                 }
                             }
@@ -145,18 +145,18 @@ public class TimetableFragment extends Fragment {
                             for (Lesson k : j.lessons) {
                                 if (k.getGroup().equals("1")) {
                                     if (k.getParity().equals("Нечетная")) {
-                                        nechetnayaPairBodySubgroup1Tv.setText(k.getName());
+                                        nechetnayaPairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         nechetnayaPairBodySubgroup1RoomTv.setText(k.getRoom());
                                     } else {
-                                        chetnayaPairBodySubgroup1Tv.setText(k.getName());
+                                        chetnayaPairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         chetnayaPairBodySubgroup1RoomTv.setText(k.getRoom());
                                     }
                                 } else {
                                     if (k.getParity().equals("Нечетная")) {
-                                        nechetnayaPairBodySubgroup2Tv.setText(k.getName());
+                                        nechetnayaPairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         nechetnayaPairBodySubgroup2RoomTv.setText(k.getRoom());
                                     } else {
-                                        chetnayaPairBodySubgroup2Tv.setText(k.getName());
+                                        chetnayaPairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         chetnayaPairBodySubgroup2RoomTv.setText(k.getRoom());
                                     }
                                 }
@@ -179,16 +179,16 @@ public class TimetableFragment extends Fragment {
 
                                 if (k.getGroup().equals("1")) {
                                     if (k.getParity().equals(GroupParity.NECHETNAYA.getParityString())) {
-                                        nechetnayaPairBodySubgroup1Tv.setText(k.getName());
+                                        nechetnayaPairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         nechetnayaPairBodySubgroup1RoomTv.setText(k.getRoom());
                                     } else {
-                                        chetnayaPairBodySubgroup1Tv.setText(k.getName());
+                                        chetnayaPairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         chetnayaPairBodySubgroup1RoomTv.setText(k.getRoom());
                                     }
 
 
                                 } else {
-                                    pairBodySubgroup2Tv.setText(k.getName());
+                                    pairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                     pairBodySubgroup2RoomTv.setText(k.getRoom());
                                 }
 
@@ -208,19 +208,81 @@ public class TimetableFragment extends Fragment {
 
                             for (Lesson k : j.lessons) {
                                 if (k.getGroup().equals("1")) {
-                                    pairBodySubgroup1Tv.setText(k.getName());
+                                    pairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                     pairBodySubgroup1RoomTv.setText(k.getRoom());
                                 } else {
                                     if (k.getParity().equals(GroupParity.NECHETNAYA.getParityString())) {
-                                        nechetnayaPairBodySubgroup2Tv.setText(k.getName());
+                                        nechetnayaPairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         nechetnayaPairBodySubgroup2RoomTv.setText(k.getRoom());
                                     } else {
-                                        chetnayaPairBodySubgroup2Tv.setText(k.getName());
+                                        chetnayaPairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                                         chetnayaPairBodySubgroup2RoomTv.setText(k.getRoom());
                                     }
                                 }
 
                             }
+                            tableContainer.addView(pairTemplate);
+                            break;
+                        case 6:
+                            pairTemplate = inflater.inflate(R.layout.pair_type_6, tableContainer, false);
+                            pairNumber = pairTemplate.findViewById(R.id.pairNumber);
+                            pairNumber.setText(Integer.toString(j.number));
+                            nechetnayaPairBodySubgroup1Tv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type6_subgroup1_tv);
+                            nechetnayaPairBodySubgroup2Tv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type6_subgroup2_tv);
+                            nechetnayaPairBodySubgroup1RoomTv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type6_subgroup1_room_tv);
+                            nechetnayaPairBodySubgroup2RoomTv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type6_subgroup2_room_tv);
+                            chetnayaPairTv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type6_tv);
+                            chetnayaPairRoomTv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type6_room_tv);
+
+
+                            for (Lesson k : j.lessons) {
+                                if (k.getParity().equals(GroupParity.CHETNAYA.getParityString())) {
+                                    chetnayaPairTv.setText(k.getName() + "\n\n" + k.getTeacher());
+                                    chetnayaPairRoomTv.setText(k.getRoom());
+                                } else {
+                                    if (k.getGroup().equals("1")) {
+                                        nechetnayaPairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
+                                        nechetnayaPairBodySubgroup1RoomTv.setText(k.getRoom());
+                                    } else {
+                                        nechetnayaPairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
+                                        nechetnayaPairBodySubgroup2RoomTv.setText(k.getRoom());
+                                    }
+
+                                }
+
+                            }
+                            tableContainer.addView(pairTemplate);
+                            break;
+                        case 7:
+                            pairTemplate = inflater.inflate(R.layout.pair_type_7, tableContainer, false);
+                            pairNumber = pairTemplate.findViewById(R.id.pairNumber);
+                            pairNumber.setText(Integer.toString(j.number));
+                            chetnayaPairBodySubgroup1Tv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type7_subgroup1_tv);
+                            chetnayaPairBodySubgroup2Tv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type7_subgroup2_tv);
+                            chetnayaPairBodySubgroup1RoomTv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type7_subgroup1_room_tv);
+                            chetnayaPairBodySubgroup2RoomTv = pairTemplate.findViewById(R.id.chetnaya_pair_body_type7_subgroup2_room_tv);
+                            nechetnayaPairTv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type7_tv);
+                            nechetnayaPairRoomTv = pairTemplate.findViewById(R.id.nechetnaya_pair_body_type7_room_tv);
+
+                            for(Lesson k : j.lessons){
+                                if(k.getParity().equals(GroupParity.NECHETNAYA.getParityString())){
+                                    nechetnayaPairTv.setText(k.getName() + "\n\n" + k.getTeacher());
+                                    nechetnayaPairRoomTv.setText(k.getRoom());
+                                }
+                                else{
+                                    if(k.getGroup().equals("1")){
+                                        chetnayaPairBodySubgroup1Tv.setText(k.getName() + "\n\n" + k.getTeacher());
+                                        chetnayaPairBodySubgroup1RoomTv.setText(k.getRoom());
+                                    }
+                                    else{
+                                        chetnayaPairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
+                                        chetnayaPairBodySubgroup2RoomTv.setText(k.getRoom());
+                                    }
+
+                                }
+
+                            }
+
                             tableContainer.addView(pairTemplate);
                             break;
                     }
