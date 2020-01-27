@@ -48,7 +48,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         android:textColor="@color/colorWhite"
-                        android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
                         app:layout_collapseMode="pin"
                         app:subtitleTextColor="@color/colorWhite"
                         app:title="Все группы"

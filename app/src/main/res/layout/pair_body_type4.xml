@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
+    android:minHeight="110dp"
     android:layout_weight="3">
 
 
@@ -11,7 +12,9 @@
         android:id="@+id/pair_body_type4_subgroup1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="Пара для 1й подгруппы без разделения на четные/нечетные недели"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +27,9 @@
         android:id="@+id/nechetnaya_pair_body_type4_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="(НЧ) Пара для 2й подруппы с разделением"
         app:layout_constraintBottom_toTopOf="@+id/view13"
@@ -37,17 +42,20 @@
         android:id="@+id/chetnaya_pair_body_type4_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="(Ч) Пара для 2й подруппы с разделением"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view12"
         app:layout_constraintTop_toBottomOf="@+id/view13" />
+
     <View
         android:id="@+id/view12"
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +74,7 @@
 
     <View
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

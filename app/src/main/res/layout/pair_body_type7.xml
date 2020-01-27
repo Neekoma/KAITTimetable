@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
+    android:minHeight="110dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_weight="3">
 
@@ -11,12 +12,14 @@
         android:id="@+id/chetnaya_pair_body_type7_subgroup1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nechetnaya_pair_body_type7_tv"
+        app:layout_constraintTop_toBottomOf="@+id/view24"
         tools:text="подгруппа 1 четная неделя" />
 
 
@@ -24,20 +27,24 @@
         android:id="@+id/chetnaya_pair_body_type7_subgroup2_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/view25"
-        app:layout_constraintTop_toBottomOf="@+id/nechetnaya_pair_body_type7_tv"
-        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/view24"
         tools:text="подгруппа 2 четная неделя" />
 
     <TextView
         android:id="@+id/nechetnaya_pair_body_type7_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/view24"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,17 +64,18 @@
 
     <View
         android:id="@+id/view24"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

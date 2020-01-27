@@ -35,6 +35,8 @@ import com.nicholas.timetable.viewmodels.TimetableViewModel;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.os.Debug.stopMethodTracing;
+
 
 public class MainActivity extends AppCompatActivity implements Sendable, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        stopMethodTracing();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

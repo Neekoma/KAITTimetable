@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">КАИТ 20 Расписание</string>
+    <string name="app_name">Мой КАИТ</string>
 
     <string name="timetable_tab_title">Расписание</string>
     <string name="replacements_tab_title">Замены</string>
@@ -24,7 +24,7 @@
     <string name="loading_please_wait">Подождите пожалуйста,\nидет загрузка</string>
     <string name="loadingError">Ошибка загрузки</string>
     <string name="tryAgain">Повторить попытку</string>
-    <string name="str_settings">Настройки</string>
+    <string name="str_choose_group">Выбрать группу</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

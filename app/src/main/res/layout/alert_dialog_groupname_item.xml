@@ -8,10 +8,10 @@
         android:id="@+id/alertDialog_groupName_Tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textAlignment="center"
         android:gravity="center"
-        tools:text="Имя группы"
+        android:textAlignment="center"
+        android:textColor="@color/blackText"
         android:textSize="18sp"
-        android:textColor="@color/blackText"/>
+        tools:text="Имя группыпы" />
 
 </FrameLayout>

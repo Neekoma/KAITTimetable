@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
+    android:minHeight="110dp"
     android:layout_weight="3">
 
     <TextView
         android:id="@+id/pair_body_type3_subgroup1_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="Пара подгруппа 1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +26,9 @@
         android:id="@+id/pair_body_type3_subgroup2_tv"
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="Пара подгруппа 2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +39,7 @@
     <View
         android:id="@+id/view10"
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +48,7 @@
 
     <View
         android:layout_width="1dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

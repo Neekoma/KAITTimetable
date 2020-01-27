@@ -22,6 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
 
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view7"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +37,8 @@
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +53,14 @@
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view4"
-        tools:text="Нечетная неделя, подгруппа 2"/>
+        tools:text="Нечетная неделя, подгруппа 2" />
 
     <!--Подгруппа 2-->
 
@@ -63,12 +69,14 @@
         style="@style/timetableInfoStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view7"
         app:layout_constraintTop_toTopOf="@+id/view4"
-        tools:text="Нечетная неделя, подгруппа 2"/>
+        tools:text="Нечетная неделя, подгруппа 2" />
 
     <!--Разделительные полосы -->
     <!---->

@@ -11,21 +11,21 @@
     android:layout_marginHorizontal="4dp">
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <include layout="@layout/pair_number" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <include layout="@layout/pair_body_type4" />
+            <include layout="@layout/pair_number" />
 
-        <include layout="@layout/pair_body_type4_room" />
-    </LinearLayout>
+            <include layout="@layout/pair_body_type4" />
+
+            <include layout="@layout/pair_body_type4_room" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
