@@ -1,6 +1,7 @@
 package com.nicholas.timetable.lists.Timetable;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,25 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
 
     public TimetableRecyclerViewAdapter(Context context, String groupName){
         this.context = context;
+        Log.d("DEBUG", "rv constructor");
         switchGroup(groupName);
     }
 
+    public TimetableRecyclerViewAdapter(String groupName){
+        switchGroup(groupName);
+    }
+
+    private void deleteSuperfluous(){
+        for(int i = 0; i < dataset.size(); i++){
+            if(dataset.get(i) instanceof Pair){
+                Pair j = (Pair) dataset.get(i);
+                if(j.type != 0) {
+                    dataset.remove(i);
+                    deleteSuperfluous();
+                }
+            }
+        }
+    }
     public void switchGroup(String groupName){
         if(dataset.size() > 0)
             dataset.clear();
@@ -39,7 +56,9 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
             dataset.add(new TableHeader(i.getDayName()));
             dataset.addAll(i.getPairs());
         }
+        deleteSuperfluous();
         notifyDataSetChanged();
+        Log.d("DEBUG", "switch");
     }
 
 
@@ -47,10 +66,16 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
     public int getItemViewType(int position) {
         if(dataset.get(position) instanceof Pair){
             Pair pair = (Pair)dataset.get(position);
-            return pair.type; //[0;7]
+            if(pair.type == 0) {
+                Log.d("DEBUG", "pair viewtype");
+                return 0;
+            }
         }
-        else if(dataset.get(position) instanceof TableHeader)
+        else if(dataset.get(position) instanceof TableHeader) {
+            Log.d("DEBUG", "header viewtype");
             return TableHeader.TABLE_HEADER_VIEW_TYPE; // 0x00A1
+        }
+        Log.d("DEBUG", "other view type");
         return -1;
     }
 
@@ -63,6 +88,7 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
             case 0:
                 view = LayoutInflater.from(context).inflate(R.layout.pair_type_0, parent, false);
                 viewHolder = new PairType0ViewHolder(view);
+                Log.d("DEBUG", "Viewholder 0");
                 break;
             case 1:
                 break;
@@ -81,6 +107,7 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
             case TableHeader.TABLE_HEADER_VIEW_TYPE:
                 view = LayoutInflater.from(context).inflate(R.layout.day_of_week, parent, false);
                 viewHolder = new DayNameViewHolder(view);
+                Log.d("DEBUG", "Viewholder header");
                 break;
         }
         return viewHolder;
@@ -88,11 +115,13 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
 
     @Override
     public void onBindViewHolder(@NonNull TimetableViewHolder holder, int position) {
+        Log.d("DEBUG", "on bind");
         holder.bind(dataset, position);
     }
 
     @Override
     public int getItemCount() {
+        Log.d("DEBUG", "item count " + dataset.size());
        return dataset.size();
     }
 }

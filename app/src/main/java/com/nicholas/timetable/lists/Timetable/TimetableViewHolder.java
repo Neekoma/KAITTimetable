@@ -10,4 +10,6 @@ public abstract class TimetableViewHolder extends RecyclerView.ViewHolder implem
     public TimetableViewHolder(@NonNull View itemView) {
         super(itemView);
     }
+
+
 }

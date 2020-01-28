@@ -3,6 +3,7 @@
     android:layout_width="55dp"
     android:layout_height="match_parent"
     android:layout_weight="0"
+    android:background="@color/colorWhite"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView

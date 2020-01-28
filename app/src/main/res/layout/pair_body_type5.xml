@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:minHeight="110dp"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
     android:layout_weight="3">
 
 

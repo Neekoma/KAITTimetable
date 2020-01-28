@@ -28,4 +28,12 @@ public class DayNameViewHolder extends TimetableViewHolder {
     }
 
     public TextView getDayName(){return dayName;}
+
+
+    //Текущий день недели подчеркнуть определенным цветом
+    /*
+    private void setTitleColor(){
+
+    }
+     */
 }

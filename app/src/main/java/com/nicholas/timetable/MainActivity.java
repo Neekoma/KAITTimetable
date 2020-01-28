@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
         timetableFragment = new TimetableFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_fragment_container, timetableFragment);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -134,30 +134,36 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                ListView groupsListView = new ListView(this);
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.alert_dialog_groupname_item, R.id.alertDialog_groupName_Tv, TimetableViewModel.getInstance().getGroupNames());
-                groupsListView.setAdapter(arrayAdapter);
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-                dialogBuilder.setView(groupsListView);
-                final AlertDialog dialog = dialogBuilder.create();
-                groupsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        TimetableViewModel.getInstance().setCurrentGroupName(MainActivity.this, arrayAdapter.getItem(position));
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("SHARED_GROUP", arrayAdapter.getItem(position));
-                        editor.commit();
-                        sharedGroup = preferences.getString("SHARED_GROUP", SELECT_GROUP_IN_PREFERENCES);
-                        selectGroupSpinner.setVisibility(View.GONE);
-                        refreshTimetable();
-                        dialog.dismiss();
-                        Log.d("DEBUG-1", "Item selected " + sharedGroup);
-                    }
-                });
-                dialog.show();
+                showGroupsList(true);
                 return true;
         }
         return false;
+    }
+
+
+    private void showGroupsList(boolean cancelable){
+        ListView groupsListView = new ListView(this);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.alert_dialog_groupname_item, R.id.alertDialog_groupName_Tv, TimetableViewModel.getInstance().getGroupNames());
+        groupsListView.setAdapter(arrayAdapter);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setView(groupsListView);
+        dialogBuilder.setCancelable(cancelable);
+        final AlertDialog dialog = dialogBuilder.create();
+        groupsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TimetableViewModel.getInstance().setCurrentGroupName(MainActivity.this, arrayAdapter.getItem(position));
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("SHARED_GROUP", arrayAdapter.getItem(position));
+                editor.commit();
+                sharedGroup = preferences.getString("SHARED_GROUP", SELECT_GROUP_IN_PREFERENCES);
+                selectGroupSpinner.setVisibility(View.GONE);
+                refreshTimetable();
+                dialog.dismiss();
+                // Log.d("DEBUG-1", "Item selected " + sharedGroup);
+            }
+        });
+        dialog.show();
     }
 
     @Override
@@ -198,9 +204,11 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
             openTimetableFragment();
         } else {
             collapsingToolbarLayout.setTitle(SELECT_GROUP_IN_PREFERENCES); // Выберите группу
+            showGroupsList(false);
             selectGroupSpinner.setVisibility(View.VISIBLE);
         }
     }
+
 
     private void loadByLocalData() {
         HashMap<String, List<DayOfWeek>> localGroups = TimetableBinder.getLocalGroups(getApplicationContext());

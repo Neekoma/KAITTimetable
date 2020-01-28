@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_weight="3"
     android:minHeight="110dp"
+    android:background="@color/colorWhite"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 

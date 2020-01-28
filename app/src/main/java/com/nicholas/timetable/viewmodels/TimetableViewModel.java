@@ -1,10 +1,12 @@
 package com.nicholas.timetable.viewmodels;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.nicholas.timetable.MainActivity;
+import com.nicholas.timetable.lists.Timetable.TimetableRecyclerViewAdapter;
 import com.nicholas.timetable.models.DayOfWeek;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +29,8 @@ public class TimetableViewModel{
     private String[] groupNames;
 
     private String currentGroupName = null;
+
+    private TimetableRecyclerViewAdapter timetableRecyclerViewAdapter;
 
 
     public static TimetableViewModel getInstance(){
@@ -62,6 +66,12 @@ public class TimetableViewModel{
     }
 
     public HashMap<String, List<DayOfWeek>> getSelectedGroup(){return selectedGroup;}
+    public String getSelectedGroupStr(){
+        for(String key : selectedGroup.keySet())
+            return key;
+        return null;
+    }
+
 
     public void setSelectedGroup(String group){
         if(!group.equals(MainActivity.SELECT_GROUP_IN_PREFERENCES)){
@@ -70,7 +80,12 @@ public class TimetableViewModel{
         }
     }
 
-
+    public TimetableRecyclerViewAdapter getTimetableRecyclerViewAdapter(Context context){
+        if(timetableRecyclerViewAdapter == null) {
+            timetableRecyclerViewAdapter = new TimetableRecyclerViewAdapter(getSelectedGroupStr());
+        }
+        return timetableRecyclerViewAdapter;
+    }
 
 
 }
