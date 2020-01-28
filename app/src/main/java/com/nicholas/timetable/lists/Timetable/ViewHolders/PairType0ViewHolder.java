@@ -6,7 +6,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.nicholas.timetable.R;
+import com.nicholas.timetable.lists.IListDataset;
 import com.nicholas.timetable.lists.Timetable.TimetableViewHolder;
+import com.nicholas.timetable.models.Pair;
+
+import java.util.ArrayList;
 
 public class PairType0ViewHolder extends TimetableViewHolder {
 
@@ -36,7 +40,10 @@ public class PairType0ViewHolder extends TimetableViewHolder {
     }
 
     @Override
-    public void bind() {
-
+    public void bind(ArrayList<IListDataset> dataset, int pos) {
+        Pair pair = (Pair) dataset.get(pos);
+        pairNumber.setText(Integer.toString(pair.number));
+        pairNumber.setText(pair.lessons.get(0).getName());
+        pairRoom.setText(pair.lessons.get(0).getRoom());
     }
 }
