@@ -1,27 +1,36 @@
 package com.nicholas.timetable.lists.Timetable.ViewHolders;
 
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.nicholas.timetable.R;
 import com.nicholas.timetable.lists.IListDataset;
+import com.nicholas.timetable.lists.Timetable.Date;
 import com.nicholas.timetable.lists.Timetable.TimetableViewHolder;
 
 import java.util.ArrayList;
 
-public abstract class AbstractPairViewHolder extends TimetableViewHolder {
+public abstract class AbstractPairViewHolder extends TimetableViewHolder implements OnClickListener{
+
+
+    protected final static String PARITY_NECHETNAYA = "Нечетная";
+    protected final static String PARTTY_CHETNAYA = "Четная";
 
     protected String start;
     protected String end;
 
     public AbstractPairViewHolder(@NonNull View itemView) {
         super(itemView);
+        itemView.setOnClickListener(this);
     }
 
-
     @Override
-    public void bind(ArrayList<IListDataset> dataset, int pos){
-
+    public void onClick(View v){
+        Toast.makeText(v.getContext(), String.format("Начало: %s\nОкончание: %s", start, end), Toast.LENGTH_LONG).show();
     }
 
     protected void setPairStartAndEnd(int pairNumber){

@@ -18,4 +18,6 @@ public class DayOfWeek {
     public List<Pair> getPairs(){return pairs;}
 
 
+
+
 }

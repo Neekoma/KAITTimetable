@@ -174,11 +174,6 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
             loadedDataContainer.setVisibility(View.VISIBLE);
             TimetableBinder.writeNewTimetableJson(getApplicationContext(), RequestSender.getInstance().getLastJson());
             Toast.makeText(this, "Расписание обновлено", Toast.LENGTH_LONG).show();
-//            if(!loaded) {
-//                startTimetableService();
-//                loaded = true;
-//            }
-
         } else {
             if(TimetableBinder.haveSave(getApplicationContext()))
                 loadByLocalData();
@@ -248,16 +243,4 @@ public class MainActivity extends AppCompatActivity implements Sendable, View.On
     public void onRefresh() {
         RequestSender.getInstance().update(this);
     }
-
-//    private void startTimetableService(){
-//        Intent intent = new Intent(this, TimetableNotificationService.class);
-//        startService(intent);
-//    }
-//
-//    private void stopTimetableService(){
-//        Intent intent = new Intent(this, TimetableNotificationService.class);
-//        startService(intent);
-//    }
-
-
 }

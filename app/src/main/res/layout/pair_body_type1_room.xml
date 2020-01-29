@@ -14,24 +14,25 @@
         <TextView
             android:id="@+id/nechetnaya_pair_body_type1_room_tv"
             style="@style/timetableInfoStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="207"
             android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.407"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="207" />
+            tools:text="207"
+            tools:visibility="visible" />
 
 
         <TextView
             android:id="@+id/chetnaya_pair_body_type1_room_tv"
             style="@style/timetableInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:text="301"
@@ -39,6 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view5"
             tools:text="301" />
         <!--Разделительная полоса-->
         <View

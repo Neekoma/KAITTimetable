@@ -2,6 +2,7 @@ package com.nicholas.timetable.models;
 import com.google.gson.annotations.SerializedName;
 import com.nicholas.timetable.lists.IListDataset;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class Pair implements IListDataset {
@@ -12,4 +13,6 @@ public class Pair implements IListDataset {
     public int type;
     @SerializedName("lessons")
     public List<Lesson> lessons;
+
+    public int dayNum;
 }

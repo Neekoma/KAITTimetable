@@ -14,6 +14,10 @@ import com.nicholas.timetable.lists.IListDataset;
 import com.nicholas.timetable.lists.TableHeader;
 import com.nicholas.timetable.lists.Timetable.ViewHolders.DayNameViewHolder;
 import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType0ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType1ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType2ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType3ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType4ViewHolder;
 import com.nicholas.timetable.models.DayOfWeek;
 import com.nicholas.timetable.models.Pair;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
@@ -29,7 +33,6 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
 
     public TimetableRecyclerViewAdapter(Context context, String groupName){
         this.context = context;
-        Log.d("DEBUG", "rv constructor");
         switchGroup(groupName);
     }
 
@@ -37,11 +40,12 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
         switchGroup(groupName);
     }
 
+    //TODO: Удалить по окончании разработки вьюхолдеров
     private void deleteSuperfluous(){
         for(int i = 0; i < dataset.size(); i++){
             if(dataset.get(i) instanceof Pair){
                 Pair j = (Pair) dataset.get(i);
-                if(j.type != 0) {
+                if(j.type != 0 && j.type != 1 && j.type != 2 && j.type != 3 && j.type != 4) {
                     dataset.remove(i);
                     deleteSuperfluous();
                 }
@@ -58,26 +62,31 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
         }
         deleteSuperfluous();
         notifyDataSetChanged();
-        Log.d("DEBUG", "switch");
     }
 
 
+    //TODO: По окончании разработки вьюхолдеров, сделать по-нормальному
     @Override
     public int getItemViewType(int position) {
         if(dataset.get(position) instanceof Pair){
             Pair pair = (Pair)dataset.get(position);
             if(pair.type == 0) {
-                Log.d("DEBUG", "pair viewtype");
                 return 0;
             }
+            if(pair.type == 1)
+                return 1;
+            if(pair.type == 2)
+                return 2;
+            if(pair.type == 3)
+                return 3;
+            if(pair.type == 4)
+                return 4;
         }
-        else if(dataset.get(position) instanceof TableHeader) {
-            Log.d("DEBUG", "header viewtype");
+        else if(dataset.get(position) instanceof TableHeader)
             return TableHeader.TABLE_HEADER_VIEW_TYPE; // 0x00A1
-        }
-        Log.d("DEBUG", "other view type");
         return -1;
     }
+
 
     @NonNull
     @Override
@@ -88,15 +97,22 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
             case 0:
                 view = LayoutInflater.from(context).inflate(R.layout.pair_type_0, parent, false);
                 viewHolder = new PairType0ViewHolder(view);
-                Log.d("DEBUG", "Viewholder 0");
                 break;
             case 1:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_3, parent, false);
+                viewHolder = new PairType1ViewHolder(view);
                 break;
             case 2:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_1, parent, false);
+                viewHolder = new PairType2ViewHolder(view);
                 break;
             case 3:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_2, parent, false);
+                viewHolder = new PairType3ViewHolder(view);
                 break;
             case 4:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_5, parent, false);
+                viewHolder = new PairType4ViewHolder(view);
                 break;
             case 5:
                 break;
@@ -115,13 +131,11 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
 
     @Override
     public void onBindViewHolder(@NonNull TimetableViewHolder holder, int position) {
-        Log.d("DEBUG", "on bind");
         holder.bind(dataset, position);
     }
 
     @Override
     public int getItemCount() {
-        Log.d("DEBUG", "item count " + dataset.size());
        return dataset.size();
     }
 }
