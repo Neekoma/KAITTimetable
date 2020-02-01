@@ -16,32 +16,31 @@ public class TimetableViewModel{
 
     private static TimetableViewModel instance;
 
-  //  private static final String FILENAME = "cache.json";
-
-
     private TimetableViewModel(){}
 
     private HashMap<String, List<DayOfWeek>> groups;
 
     private HashMap<String, List<DayOfWeek>> selectedGroup;
 
+    private TimetableRecyclerViewAdapter timetableAdapter;
 
     private String[] groupNames;
 
     private String currentGroupName = null;
 
-    private TimetableRecyclerViewAdapter timetableRecyclerViewAdapter;
-
 
     public static TimetableViewModel getInstance(){
-        if (instance == null)
+        if (instance == null) {
             instance = new TimetableViewModel();
+        }
         return instance;
     }
 
 
 
     public String[] getGroupNames(){return groupNames;}
+
+
     public void setGroups(HashMap<String, List<DayOfWeek>> groups){
         this.groups = groups;
         groupNames = new String[groups.size()];
@@ -50,42 +49,23 @@ public class TimetableViewModel{
             groupNames[i] = entry.getKey();
             i++;
         }
-        //Вывести список групп (имена)
-        for(String j : groupNames)
-            Log.d("DEBUG", j);
-
-
     }
+
+
+    public TimetableRecyclerViewAdapter getAdapter(Context context){
+        if(timetableAdapter == null)
+            timetableAdapter = new TimetableRecyclerViewAdapter(context);
+        return timetableAdapter;
+    }
+
     public HashMap<String, List<DayOfWeek>> getGroups(){return groups;}
 
-    public void setCurrentGroupName(MainActivity activity, String groupName){
+    public void setCurrentGroupName(String groupName){
         currentGroupName = groupName;
     }
-    public String getCurrentGroupName(){
-        return currentGroupName;
-    }
-
-    public HashMap<String, List<DayOfWeek>> getSelectedGroup(){return selectedGroup;}
-    public String getSelectedGroupStr(){
-        for(String key : selectedGroup.keySet())
-            return key;
-        return null;
-    }
+    public String getCurrentGroupName(){return currentGroupName;}
 
 
-    public void setSelectedGroup(String group){
-        if(!group.equals(MainActivity.SELECT_GROUP_IN_PREFERENCES)){
-            selectedGroup = new HashMap<>();
-            selectedGroup.put(group, groups.get(group));
-        }
-    }
-
-    public TimetableRecyclerViewAdapter getTimetableRecyclerViewAdapter(Context context){
-        if(timetableRecyclerViewAdapter == null) {
-            timetableRecyclerViewAdapter = new TimetableRecyclerViewAdapter(getSelectedGroupStr());
-        }
-        return timetableRecyclerViewAdapter;
-    }
 
 
 }

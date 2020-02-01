@@ -39,6 +39,7 @@ public class PairType4ViewHolder extends AbstractPairViewHolder {
     public void bind(ArrayList<IListDataset> dataset, int pos) {
         Pair pair = (Pair) dataset.get(pos);
         pairNumber.setText(Integer.toString(pair.number));
+        setPairStartAndEnd(pair.number);
         for (Lesson k : pair.lessons) {
 
             if (k.getGroup().equals("1")) {

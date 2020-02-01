@@ -64,5 +64,6 @@ public class PairType3ViewHolder extends AbstractPairViewHolder {
             }
 
         }
+        setPairStartAndEnd(pair.number);
     }
 }

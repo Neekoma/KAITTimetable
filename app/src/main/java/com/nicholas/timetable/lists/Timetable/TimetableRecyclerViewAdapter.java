@@ -31,15 +31,14 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
 
     private Context context;
 
-    public TimetableRecyclerViewAdapter(Context context, String groupName){
+
+    public TimetableRecyclerViewAdapter(Context context){
         this.context = context;
-        switchGroup(groupName);
     }
 
-    public TimetableRecyclerViewAdapter(String groupName){
-        switchGroup(groupName);
+    public TimetableRecyclerViewAdapter(String groupname){
+        switchGroup(groupname);
     }
-
     //TODO: Удалить по окончании разработки вьюхолдеров
     private void deleteSuperfluous(){
         for(int i = 0; i < dataset.size(); i++){
@@ -70,9 +69,8 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
     public int getItemViewType(int position) {
         if(dataset.get(position) instanceof Pair){
             Pair pair = (Pair)dataset.get(position);
-            if(pair.type == 0) {
+            if(pair.type == 0)
                 return 0;
-            }
             if(pair.type == 1)
                 return 1;
             if(pair.type == 2)
@@ -123,7 +121,6 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
             case TableHeader.TABLE_HEADER_VIEW_TYPE:
                 view = LayoutInflater.from(context).inflate(R.layout.day_of_week, parent, false);
                 viewHolder = new DayNameViewHolder(view);
-                Log.d("DEBUG", "Viewholder header");
                 break;
         }
         return viewHolder;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.LoadingErrorFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/loading_error"
+            android:src="@drawable/nowifi" />
+
+        <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/loading_error"
+         android:textAlignment="center"
+         android:textSize="18sp"
+         android:layout_gravity="center"
+         android:layout_marginRight="2dp"
+         android:layout_marginLeft="2dp"
+         android:layout_marginTop="32dp"
+         android:textColor="@color/blackText"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/try_again"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:textSize="24sp"
+            android:layout_marginTop="64dp"
+            android:textColor="@color/blueButton"/>
+    </LinearLayout>
+
+</FrameLayout>

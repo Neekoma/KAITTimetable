@@ -16,7 +16,6 @@ public class RequestSender implements Updateable, Callback<String> {
 
     private static RequestSender instance;
 
-    //Изменить при необходимости
     public static final String SERVER_URL = "http://junior.ru/rasp/api/";
 
 
@@ -67,21 +66,14 @@ public class RequestSender implements Updateable, Callback<String> {
             TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
             lastJson = response.body();
             lastSender.getSendCallbackResult(true);
-            Log.d("DEBUG-NET", "Good");
         }
-        else {
+        else
             lastSender.getSendCallbackResult(false);
-            Log.d("DEBUG-NET", "Fail code" + Integer.toString(response.code()));
-        }
     }
 
     @Override
     public void onFailure(Call<String> call, Throwable t) {
         lastSender.getSendCallbackResult(false);
-        Log.d("DEBUG-NET", "onFailure");
     }
     public String getLastJson(){return lastJson;}
 }
-
-
-

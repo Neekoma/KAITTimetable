@@ -30,7 +30,7 @@ public abstract class AbstractPairViewHolder extends TimetableViewHolder impleme
 
     @Override
     public void onClick(View v){
-        Toast.makeText(v.getContext(), String.format("Начало: %s\nОкончание: %s", start, end), Toast.LENGTH_LONG).show();
+        Toast.makeText(v.getContext(), String.format("Начало: %s\nОкончание: %s", start, end), Toast.LENGTH_SHORT).show();
     }
 
     protected void setPairStartAndEnd(int pairNumber){

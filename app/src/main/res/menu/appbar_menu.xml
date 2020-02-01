@@ -6,6 +6,6 @@
         android:id="@+id/action_settings"
         android:title="@string/str_choose_group"
         app:showAsAction="always"
-        android:iconTint="@color/colorWhite"/>
+        android:iconTint="@color/colorWhite" />
 
 </menu>

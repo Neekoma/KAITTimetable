@@ -96,7 +96,7 @@ public class TimetableBinder {
     public static HashMap<String, List<DayOfWeek>> getLocalGroups(Context context){
         if(haveSave(context)) {
             Handler jsonHandler = new Handler();
-            HashMap<String, List<DayOfWeek>>localGroups = jsonHandler.setGroups(getCacheJsonFile(context));
+            HashMap<String, List<DayOfWeek>> localGroups = jsonHandler.setGroups(getCacheJsonFile(context));
             return localGroups;
         }
         return null;

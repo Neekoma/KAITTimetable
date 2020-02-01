@@ -3,11 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/timetableFragment">
+    app:startDestination="@id/loadFragment">
 
     <fragment
         android:id="@+id/timetableFragment"
         android:name="com.nicholas.timetable.fragments.TimetableFragment"
         android:label="fragment_timetable"
         tools:layout="@layout/pair_type_0" />
+    <fragment
+        android:id="@+id/loadingErrorFragment"
+        android:name="com.nicholas.timetable.fragments.LoadingErrorFragment"
+        android:label="fragment_loading_error"
+        tools:layout="@layout/fragment_loading_error" />
+    <fragment
+        android:id="@+id/loadFragment"
+        android:name="com.nicholas.timetable.fragments.LoadFragment"
+        android:label="fragment_load"
+        tools:layout="@layout/fragment_load" >
+        <action
+            android:id="@+id/action_loadFragment_to_loadingErrorFragment"
+            app:destination="@id/loadingErrorFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_loadFragment_to_timetableFragment"
+            app:destination="@+id/timetableFragment"
+            app:launchSingleTop="false" />
+    </fragment>
 </navigation>

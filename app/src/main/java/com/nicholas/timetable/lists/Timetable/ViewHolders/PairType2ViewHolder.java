@@ -34,6 +34,7 @@ public class PairType2ViewHolder extends AbstractPairViewHolder {
     public void bind(ArrayList<IListDataset> dataset, int pos) {
         Pair pair = (Pair) dataset.get(pos);
         pairNumber.setText(Integer.toString(pair.number));
+        setPairStartAndEnd(pair.number);
         for (Lesson i : pair.lessons) {
             if (i.getParity().equals(super.PARITY_NECHETNAYA)) {
                 nechetnayaPairName.setText(i.getName() + "\n\n" + i.getTeacher());
@@ -43,6 +44,5 @@ public class PairType2ViewHolder extends AbstractPairViewHolder {
                 chetnayaPairRoom.setText(i.getRoom());
             }
         }
-        setPairStartAndEnd(pair.number);
     }
 }
