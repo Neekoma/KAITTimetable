@@ -30,9 +30,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.nicholas.timetable.R;
 import com.nicholas.timetable.TimetableBinder;
+import com.nicholas.timetable.UpdatesChecker;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
 import java.util.Calendar;
+
 
 public class TimetableFragment extends Fragment {
 
@@ -47,6 +49,7 @@ public class TimetableFragment extends Fragment {
 
     private RecyclerView timetableRecyclerView;
 
+    private UpdatesChecker checker;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -79,14 +82,17 @@ public class TimetableFragment extends Fragment {
     }
 
     private void openTimetable(){
-        if(sharedGroup.equals(SELECT_GROUP_IN_PREFERENCES))
-            showGroupList(false);
-        else {
+        if(TimetableViewModel.getInstance().getGroups().containsKey(sharedGroup) && !sharedGroup.equals(SELECT_GROUP_IN_PREFERENCES))
             updateTimetable();
-        }
+        else
+            showGroupList(false);
     }
     private void updateTimetable(){
         TimetableViewModel.getInstance().getAdapter(getContext()).switchGroup(TimetableViewModel.getInstance().getCurrentGroupName());
+//        if(checker == null) {
+//            checker = new UpdatesChecker(getContext());
+//            checker.startChecking();
+//        }
     }
 
     private void showGroupList(boolean mode){
@@ -179,4 +185,8 @@ public class TimetableFragment extends Fragment {
         super.onPause();
         ((AppCompatActivity)getActivity()).setSupportActionBar(null);
     }
+
+
+
+
 }

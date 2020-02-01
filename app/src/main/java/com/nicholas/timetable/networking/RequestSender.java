@@ -17,6 +17,7 @@ public class RequestSender implements Updateable, Callback<String> {
     private static RequestSender instance;
 
     public static final String SERVER_URL = "http://junior.ru/rasp/api/";
+    public static final String DEBUG_SERVER_URL = "http://192.168.1.66:8080/api/";
 
 
     Retrofit retrofit;

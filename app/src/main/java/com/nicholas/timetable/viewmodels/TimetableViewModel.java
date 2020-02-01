@@ -63,6 +63,7 @@ public class TimetableViewModel{
     public void setCurrentGroupName(String groupName){
         currentGroupName = groupName;
     }
+
     public String getCurrentGroupName(){return currentGroupName;}
 
 

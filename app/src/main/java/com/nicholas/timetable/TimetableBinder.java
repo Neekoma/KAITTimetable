@@ -26,6 +26,7 @@ public class TimetableBinder {
      *              false, если расписание с сервера отличается от сохраненного
      */
     public static boolean compareTimetable(Context context, String newJson){
+        Log.d("DEBUG", "compare");
        try(BufferedReader reader = new BufferedReader(new InputStreamReader(context.openFileInput(CACHE_FILENAME)))){
            String localJson = "";
            String line;
@@ -34,9 +35,7 @@ public class TimetableBinder {
            Handler jsonHandler = new Handler();
            HashMap<String, List<DayOfWeek>> localGroups = jsonHandler.setGroups(localJson);
            HashMap<String, List<DayOfWeek>> serverGroups = jsonHandler.setGroups(newJson);
-           if(localGroups.equals(serverGroups))
-               return true;
-           writeNewTimetableJson(context, newJson);
+           return localGroups.equals(serverGroups);
        }
 
        catch (IOException e){
@@ -44,6 +43,8 @@ public class TimetableBinder {
        }
         return false;
     }
+
+
 
     /**
      * Записать новый файл с расписание в память устройства

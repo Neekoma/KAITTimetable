@@ -11,6 +11,7 @@ import com.nicholas.timetable.R
 import com.nicholas.timetable.TimetableBinder
 import com.nicholas.timetable.networking.RequestSender
 import com.nicholas.timetable.networking.Sendable
+import com.nicholas.timetable.viewmodels.TimetableViewModel
 
 class LoadFragment : Fragment(), Sendable, Runnable{
 
@@ -36,6 +37,7 @@ class LoadFragment : Fragment(), Sendable, Runnable{
         } else
             Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_loadingErrorFragment)
     }
+
     override fun run(){
         Thread.sleep(300)
         if(TimetableBinder.haveSave(context))
