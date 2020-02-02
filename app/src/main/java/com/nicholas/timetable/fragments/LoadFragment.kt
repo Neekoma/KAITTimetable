@@ -1,6 +1,7 @@
 package com.nicholas.timetable.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,7 @@ class LoadFragment : Fragment(), Sendable, Runnable{
 
     override fun getSendCallbackResult(result: Boolean) {
         if (result) {
+            Log.d("DEBUG", "загрузка нового расписания")
             TimetableBinder.writeNewTimetableJson(context, RequestSender.getInstance().lastJson)
             Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
         } else
@@ -40,8 +42,10 @@ class LoadFragment : Fragment(), Sendable, Runnable{
 
     override fun run(){
         Thread.sleep(300)
-        if(TimetableBinder.haveSave(context))
+        if(TimetableBinder.haveSave(context)) {
             Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
+            Log.d("DEBUG", "have save")
+        }
         else
             RequestSender.getInstance().update(this)
     }

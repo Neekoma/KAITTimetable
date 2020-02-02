@@ -25,6 +25,11 @@ import com.nicholas.timetable.viewmodels.TimetableViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<TimetableViewHolder> {
 
     private ArrayList<IListDataset> dataset = new ArrayList<>();
@@ -52,17 +57,30 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
         }
     }
     public void switchGroup(String groupName){
-        if(dataset.size() > 0)
-            dataset.clear();
-        List<DayOfWeek> days = TimetableViewModel.getInstance().getGroups().get(groupName);
-        for(DayOfWeek i : days) {
-            dataset.add(new TableHeader(i.getDayName()));
-            dataset.addAll(i.getPairs());
-        }
-        deleteSuperfluous();
-        notifyDataSetChanged();
+        Disposable dispose = groupSwitcher(groupName)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(it->{
+                    notifyDataSetChanged();
+                },it->{
+
+                });
     }
 
+
+    private Observable<Integer> groupSwitcher(String groupName){
+        return Observable.create(subscriber->{
+            if(dataset.size() > 0)
+                dataset.clear();
+            List<DayOfWeek> days = TimetableViewModel.getInstance().getGroups().get(groupName);
+            for(DayOfWeek i : days) {
+                dataset.add(new TableHeader(i.getDayName()));
+                dataset.addAll(i.getPairs());
+            }
+            deleteSuperfluous();
+            subscriber.onNext(1);
+        });
+    }
 
     //TODO: По окончании разработки вьюхолдеров, сделать по-нормальному
     @Override

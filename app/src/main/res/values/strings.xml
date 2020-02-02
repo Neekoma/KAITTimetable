@@ -51,7 +51,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="loading_error">Во время загрузки произошла ошибка.\nПроверьте ваше подключение к сети</string>
+    <string name="loading_error">Во время загрузки произошла ошибка\nПроверьте ваше подключение к сети</string>
     <string name="str_refresh">Обновить</string>
     <string name="try_again">Повторить попытку</string>
     <string name="app_name_uppercase">МОЙ КАИТ</string>

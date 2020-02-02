@@ -89,10 +89,10 @@ public class TimetableFragment extends Fragment {
     }
     private void updateTimetable(){
         TimetableViewModel.getInstance().getAdapter(getContext()).switchGroup(TimetableViewModel.getInstance().getCurrentGroupName());
-//        if(checker == null) {
-//            checker = new UpdatesChecker(getContext());
-//            checker.startChecking();
-//        }
+        if(checker == null) {
+            checker = new UpdatesChecker(getContext());
+            checker.startChecking();
+        }
     }
 
     private void showGroupList(boolean mode){

@@ -14,7 +14,11 @@
         android:id="@+id/loadingErrorFragment"
         android:name="com.nicholas.timetable.fragments.LoadingErrorFragment"
         android:label="fragment_loading_error"
-        tools:layout="@layout/fragment_loading_error" />
+        tools:layout="@layout/fragment_loading_error" >
+        <action
+            android:id="@+id/action_loadingErrorFragment_to_loadFragment"
+            app:destination="@id/loadFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loadFragment"
         android:name="com.nicholas.timetable.fragments.LoadFragment"
