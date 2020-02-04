@@ -1,11 +1,7 @@
 package com.nicholas.timetable.networking;
 
-import android.util.Log;
-
 import com.nicholas.timetable.JsonHandler.Handler;
-import com.nicholas.timetable.TimetableBinder;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,11 +35,6 @@ public class RequestSender implements Updateable, Callback<String> {
         return instance;
     }
 
-
-    public IApiRequests getApi() {
-        return api;
-    }
-
     private void initNetworkObject() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(SERVER_URL)
@@ -62,14 +53,18 @@ public class RequestSender implements Updateable, Callback<String> {
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        if(response.isSuccessful()){
-            Handler jsonHandler = new Handler();
-            TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
-            lastJson = response.body();
-            lastSender.getSendCallbackResult(true);
+        try {
+            if (response.isSuccessful()) {
+                Handler jsonHandler = new Handler();
+                TimetableViewModel.getInstance().setGroups(jsonHandler.setGroups(response.body()));
+                lastJson = response.body();
+                lastSender.getSendCallbackResult(true);
+            } else
+                lastSender.getSendCallbackResult(false);
         }
-        else
+        catch (Exception e){
             lastSender.getSendCallbackResult(false);
+        }
     }
 
     @Override

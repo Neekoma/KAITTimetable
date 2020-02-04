@@ -49,13 +49,12 @@ public class TimetableFragment extends Fragment {
 
     private RecyclerView timetableRecyclerView;
 
-    private UpdatesChecker checker;
+   // private UpdatesChecker checker; Ошибка молодости
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
-        TimetableViewModel.getInstance().setGroups(TimetableBinder.getLocalGroups(getContext()));
         parent = view;
         initWidgets(view);
         initCallsFragment();
@@ -81,21 +80,22 @@ public class TimetableFragment extends Fragment {
         return false;
     }
 
-    private void openTimetable(){
-        if(TimetableViewModel.getInstance().getGroups().containsKey(sharedGroup) && !sharedGroup.equals(SELECT_GROUP_IN_PREFERENCES))
+    private void openTimetable() {
+        if (TimetableViewModel.getInstance().getGroups().containsKey(sharedGroup) && !sharedGroup.equals(SELECT_GROUP_IN_PREFERENCES))
             updateTimetable();
         else
             showGroupList(false);
     }
-    private void updateTimetable(){
-        TimetableViewModel.getInstance().getAdapter(getContext()).switchGroup(TimetableViewModel.getInstance().getCurrentGroupName());
-        if(checker == null) {
-            checker = new UpdatesChecker(getContext());
-            checker.startChecking();
-        }
+
+    private void updateTimetable() {
+        // В случае, если во время обновления расписания не обнаружилось ранее выбранной группы, принудительно открыть список выбора групп
+        if (TimetableViewModel.getInstance().getGroups().containsKey(TimetableViewModel.getInstance().getCurrentGroupName()))
+            TimetableViewModel.getInstance().getAdapter(getContext()).switchGroup(TimetableViewModel.getInstance().getCurrentGroupName());
+        else
+            showGroupList(false);
     }
 
-    private void showGroupList(boolean mode){
+    private void showGroupList(boolean mode) {
         ListView groupsListView = new ListView(getContext());
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.alert_dialog_groupname_item, R.id.alertDialog_groupName_Tv, TimetableViewModel.getInstance().getGroupNames());
         groupsListView.setAdapter(arrayAdapter);
@@ -119,7 +119,7 @@ public class TimetableFragment extends Fragment {
         dialog.show();
     }
 
-    private void initWidgets(View v){
+    private void initWidgets(View v) {
         ViewGroup contentContainer = v.findViewById(R.id.timetable_content_container);
         timetableRecyclerView = v.findViewById(R.id.timetableRecyclerView);
         timetableRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -129,7 +129,7 @@ public class TimetableFragment extends Fragment {
         setWeek();
     }
 
-    private void initToolbar(View v){
+    private void initToolbar(View v) {
         setHasOptionsMenu(true);
         collapsingToolbarLayout = v.findViewById(R.id.collapsingToolbarLayout);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
@@ -138,7 +138,7 @@ public class TimetableFragment extends Fragment {
         collapsingToolbarLayout.setTitle(sharedGroup);
         collapsingToolbarLayout.setNestedScrollingEnabled(true);
         toolbar = v.findViewById(R.id.timetable_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
 
     private void setWeek() {
@@ -167,7 +167,7 @@ public class TimetableFragment extends Fragment {
     }
 
 
-    private void initCallsFragment(){
+    private void initCallsFragment() {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         CallsFragment fragment = new CallsFragment();
         transaction.replace(R.id.timerFragment_container, fragment);
@@ -183,10 +183,8 @@ public class TimetableFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        ((AppCompatActivity)getActivity()).setSupportActionBar(null);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(null);
     }
-
-
 
 
 }

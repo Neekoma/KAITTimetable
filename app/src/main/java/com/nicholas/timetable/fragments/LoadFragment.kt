@@ -32,22 +32,18 @@ class LoadFragment : Fragment(), Sendable, Runnable{
     }
 
     override fun getSendCallbackResult(result: Boolean) {
-        if (result) {
-            Log.d("DEBUG", "загрузка нового расписания")
-            TimetableBinder.writeNewTimetableJson(context, RequestSender.getInstance().lastJson)
+        if(result)
             Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
-        } else
-            Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_loadingErrorFragment)
+        else
+            if(TimetableBinder.haveSave(context))
+                Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
+            else
+                Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_loadingErrorFragment)
     }
 
     override fun run(){
-        Thread.sleep(300)
-        if(TimetableBinder.haveSave(context)) {
-            Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
-            Log.d("DEBUG", "have save")
-        }
-        else
-            RequestSender.getInstance().update(this)
+        Thread.sleep(400)
+        RequestSender.getInstance().update(this);
     }
 
 

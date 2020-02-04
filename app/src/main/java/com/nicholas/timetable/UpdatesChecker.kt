@@ -19,7 +19,7 @@ class UpdatesChecker(private val context: Context) : Sendable {
     private fun dataSourse(): Observable<String> {
         return Observable.create { subscriber ->
             while (true) {
-                Thread.sleep(6000)
+                Thread.sleep(15 * 1000)
                 RequestSender.getInstance().update(this)
             }
         }
@@ -40,6 +40,7 @@ class UpdatesChecker(private val context: Context) : Sendable {
         if (result) {
             val dispose = TimetableBinder.timetableComparator(context, RequestSender.getInstance().lastJson)
                     .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         Log.d("DEBUG", "From subscriber " + it)
                         if(!it){
