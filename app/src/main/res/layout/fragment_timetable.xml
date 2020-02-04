@@ -62,6 +62,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/dateToday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Сегодня будут танцы"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/blackText"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/dateWeekRange"
+                android:layout_width="150dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                tools:text="388 — 1337 февраля"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorWhite"
+                android:background="@color/oddWeekBlue"/>
                 <TextView
                     android:id="@+id/oddWeek"
                     android:layout_width="wrap_content"

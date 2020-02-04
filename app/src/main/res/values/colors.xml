@@ -13,6 +13,6 @@
     <color name="blackText">#000</color>
 
     <!--Цвета для обозначени четности текущей недели-->
-    <color name="oddWeekRed">#BD3430</color>
+    <color name="oddWeekRed">#FF162E</color>
     <color name="oddWeekBlue">#2E6697</color>
 </resources>

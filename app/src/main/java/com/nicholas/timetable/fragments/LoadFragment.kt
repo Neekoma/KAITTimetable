@@ -32,17 +32,20 @@ class LoadFragment : Fragment(), Sendable, Runnable{
     }
 
     override fun getSendCallbackResult(result: Boolean) {
-        if(result)
+        if(result) {
+            TimetableBinder.writeNewTimetableJson(context, RequestSender.getInstance().lastJson)
             Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
+        }
         else
-            if(TimetableBinder.haveSave(context))
+            if(TimetableBinder.haveSave(context)) {
+                TimetableViewModel.getInstance().groups = TimetableBinder.getLocalGroups(context)
                 Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_timetableFragment)
+            }
             else
                 Navigation.findNavController(view!!).navigate(R.id.action_loadFragment_to_loadingErrorFragment)
     }
 
     override fun run(){
-        Thread.sleep(400)
         RequestSender.getInstance().update(this);
     }
 

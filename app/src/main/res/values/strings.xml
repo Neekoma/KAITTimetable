@@ -55,4 +55,5 @@
     <string name="str_refresh">Обновить</string>
     <string name="try_again">Повторить попытку</string>
     <string name="app_name_uppercase">МОЙ КАИТ</string>
+    <string name="group">Группа</string>
 </resources>

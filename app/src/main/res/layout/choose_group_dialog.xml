@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/chooseGroupEditText"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/choose_group_ed_bg"
+        android:drawableLeft="@drawable/ic_group"
+        android:drawablePadding="2dp"
+        android:hint="ПИСА́ТЬ ЗДЕСЬ!!!"
+        android:inputType="text"
+        android:maxLength="12"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:textColor="@color/blackText"
+        android:textSize="24sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chooseGroupRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>
