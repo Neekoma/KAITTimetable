@@ -20,6 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.alert_dialog_groupname_item.view.*
 import android.text.method.TextKeyListener.clear
+import io.reactivex.disposables.Disposable
 
 
 class GroupSelectorRVAdapter(val selector: GroupSelector,
@@ -27,11 +28,12 @@ class GroupSelectorRVAdapter(val selector: GroupSelector,
                              val timetableFragment: TimetableFragment) : RecyclerView.Adapter<GroupSelectorRVAdapter.GroupViewHolder>(){
 
     private var items: MutableList<String>? = null
+    private var dispose: Disposable
 
 init{
     items = mutableListOf()
     items!!.addAll(TimetableViewModel.getInstance().groupNames)
-    val dispose = filter()
+    dispose = filter()
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -89,6 +91,7 @@ init{
             editor.putString("SHARED_GROUP", groupName.text.toString());
             editor.commit()
             timetableFragment.update()
+            dispose.dispose()
             selector.hideGroupSelector()
         }
     }
