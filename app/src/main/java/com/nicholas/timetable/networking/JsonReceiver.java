@@ -2,10 +2,6 @@ package com.nicholas.timetable.networking;
 
 import android.util.Log;
 
-import com.nicholas.timetable.JsonHandler.Handler;
-import com.nicholas.timetable.TimetableBinder;
-import com.nicholas.timetable.viewmodels.TimetableViewModel;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -16,6 +16,9 @@ import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType1ViewHolder;
 import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType2ViewHolder;
 import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType3ViewHolder;
 import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType4ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType5ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType6ViewHolder;
+import com.nicholas.timetable.lists.Timetable.ViewHolders.PairType7ViewHolder;
 import com.nicholas.timetable.models.DayOfWeek;
 import com.nicholas.timetable.models.Pair;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
@@ -23,7 +26,7 @@ import com.nicholas.timetable.viewmodels.TimetableViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -42,18 +45,7 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
     public TimetableRecyclerViewAdapter(String groupname){
         switchGroup(groupname);
     }
-    //TODO: Удалить по окончании разработки вьюхолдеров
-    private void deleteSuperfluous(){
-        for(int i = 0; i < dataset.size(); i++){
-            if(dataset.get(i) instanceof Pair){
-                Pair j = (Pair) dataset.get(i);
-                if(j.type != 0 && j.type != 1 && j.type != 2 && j.type != 3 && j.type != 4) {
-                    dataset.remove(i);
-                    deleteSuperfluous();
-                }
-            }
-        }
-    }
+
     public void switchGroup(String groupName){
         Disposable dispose = groupSwitcher(groupName)
                 .subscribeOn(Schedulers.newThread())
@@ -66,8 +58,8 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
     }
 
 
-    private Observable<Integer> groupSwitcher(String groupName){
-        return Observable.create(subscriber->{
+    private Single<Integer> groupSwitcher(String groupName){
+        return Single.create(subscriber->{
             if(dataset.size() > 0)
                 dataset.clear();
             List<DayOfWeek> days = TimetableViewModel.getInstance().getGroups().get(groupName);
@@ -75,26 +67,16 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
                 dataset.add(new TableHeader(i.getDayName()));
                 dataset.addAll(i.getPairs());
             }
-            deleteSuperfluous();
-            subscriber.onNext(1);
+            subscriber.onSuccess(1);
         });
     }
 
-    //TODO: По окончании разработки вьюхолдеров, сделать по-нормальному
     @Override
     public int getItemViewType(int position) {
+
         if(dataset.get(position) instanceof Pair){
             Pair pair = (Pair)dataset.get(position);
-            if(pair.type == 0)
-                return 0;
-            if(pair.type == 1)
-                return 1;
-            if(pair.type == 2)
-                return 2;
-            if(pair.type == 3)
-                return 3;
-            if(pair.type == 4)
-                return 4;
+            return pair.type;
         }
         else if(dataset.get(position) instanceof TableHeader)
             return TableHeader.TABLE_HEADER_VIEW_TYPE; // 0x00A1
@@ -129,10 +111,16 @@ public class TimetableRecyclerViewAdapter extends RecyclerView.Adapter<Timetable
                 viewHolder = new PairType4ViewHolder(view);
                 break;
             case 5:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_4, parent, false);
+                viewHolder = new PairType5ViewHolder(view);
                 break;
             case 6:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_6, parent, false);
+                viewHolder = new PairType6ViewHolder(view);
                 break;
             case 7:
+                view = LayoutInflater.from(context).inflate(R.layout.pair_type_7, parent, false);
+                viewHolder = new PairType7ViewHolder(view);
                 break;
             case TableHeader.TABLE_HEADER_VIEW_TYPE:
                 view = LayoutInflater.from(context).inflate(R.layout.day_of_week, parent, false);

@@ -33,10 +33,6 @@
     <string name="str_lunch_menu">Меню</string>
     <string name="str_press">Новости</string>
     <string name="str_timetable">Расписание</string>
-    <string name="str_you_logged_as_guest">Вы вошли как <b>гость</b>.</string>
-    <string name="str_you_logged_as_tester">Вы вошли как <b>тестировщик</b>.\nВаша группа: <b>П-311</b></string>
-    <string name="title_activity_settings">Settings</string>
-
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -45,12 +41,7 @@
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="save_timetable_loaded">Загружено сохраненное расписание</string>
     <string name="loading_error">Во время загрузки произошла ошибка\nПроверьте ваше подключение к сети</string>
     <string name="str_refresh">Обновить</string>
     <string name="try_again">Повторить попытку</string>

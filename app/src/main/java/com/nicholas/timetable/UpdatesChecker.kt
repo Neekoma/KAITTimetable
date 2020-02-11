@@ -3,8 +3,7 @@ package com.nicholas.timetable
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.nicholas.timetable.JsonHandler.Handler
-import com.nicholas.timetable.networking.JsonReceiver
+import com.nicholas.timetable.Json.Handler
 import com.nicholas.timetable.networking.RequestSender
 import com.nicholas.timetable.networking.Sendable
 import com.nicholas.timetable.viewmodels.TimetableViewModel

@@ -13,7 +13,7 @@
         android:background="@drawable/choose_group_ed_bg"
         android:drawableLeft="@drawable/ic_group"
         android:drawablePadding="2dp"
-        android:hint="ПИСА́ТЬ ЗДЕСЬ!!!"
+        android:hint="@string/group"
         android:inputType="text"
         android:maxLength="12"
         android:padding="6dp"
@@ -25,6 +25,7 @@
         android:id="@+id/chooseGroupRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
         android:layout_marginTop="4dp" />
 
 </LinearLayout>

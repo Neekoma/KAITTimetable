@@ -1,26 +1,18 @@
 package com.nicholas.timetable;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.nicholas.timetable.JsonHandler.Handler;
+import com.nicholas.timetable.Json.Handler;
 import com.nicholas.timetable.models.DayOfWeek;
-import com.nicholas.timetable.models.Lesson;
-import com.nicholas.timetable.models.Pair;
-import com.nicholas.timetable.networking.RequestSender;
-import com.nicholas.timetable.viewmodels.TimetableViewModel;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;

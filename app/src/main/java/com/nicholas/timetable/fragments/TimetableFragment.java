@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,11 +25,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.nicholas.timetable.App;
 import com.nicholas.timetable.R;
 import com.nicholas.timetable.Updateable;
 import com.nicholas.timetable.dialogs.groupSelect.GroupSelector;
+import com.nicholas.timetable.time.Timer;
 import com.nicholas.timetable.time.WeekWorker;
 import com.nicholas.timetable.viewmodels.TimetableViewModel;
+
+import java.util.zip.Inflater;
 
 public class TimetableFragment extends Fragment implements Updateable {
 
@@ -44,6 +49,9 @@ public class TimetableFragment extends Fragment implements Updateable {
     private WeekWorker weekWorker;
     private TextView dateToday;
     private TextView dateWeekRange;
+    private TextView mCallsTv;
+    private TextView mLunchTv;
+    private Timer callsTimer;
 
     private RecyclerView timetableRecyclerView;
 
@@ -58,13 +66,20 @@ public class TimetableFragment extends Fragment implements Updateable {
         initCalendar(view);
         parent = view;
         initWidgets(view);
-        initCallsFragment();
+        initCallsFragment(view);
         preferences = getActivity().getSharedPreferences("MY_SHARED", Context.MODE_PRIVATE);
         sharedGroup = preferences.getString("SHARED_GROUP", SELECT_GROUP_IN_PREFERENCES);
         TimetableViewModel.getInstance().setCurrentGroupName(sharedGroup);
         initToolbar(view);
         openTimetable();
         return view;
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        if(!App.isOnline)
+            Toast.makeText(getContext(), "Загружено сохраненное расписание", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -90,24 +105,6 @@ public class TimetableFragment extends Fragment implements Updateable {
     }
 
     private void showGroupList(boolean mode) {
-//        ListView groupsListView = new ListView(getContext());
-//        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.alert_dialog_groupname_item, R.id.alertDialog_groupName_Tv, TimetableViewModel.getInstance().getGroupNames());
-//        groupsListView.setAdapter(arrayAdapter);
-//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
-//        dialogBuilder.setCancelable(mode);
-//        dialogBuilder.setView(groupsListView);
-//        final AlertDialog dialog = dialogBuilder.create();
-//        groupsListView.setOnItemClickListener((parent, view, position, id) -> {
-//            TimetableViewModel.getInstance().setCurrentGroupName(arrayAdapter.getItem(position));
-//            SharedPreferences.Editor editor = preferences.edit();
-//            editor.putString("SHARED_GROUP", arrayAdapter.getItem(position));
-//            editor.commit();
-//            sharedGroup = preferences.getString("SHARED_GROUP", SELECT_GROUP_IN_PREFERENCES);
-//            collapsingToolbarLayout.setTitle(sharedGroup);
-//            update();
-//            dialog.dismiss();
-//        });
-//        dialog.show();
         if(selector == null)
             selector = new GroupSelector();
         selector.showGroupSelector(this, mode);
@@ -140,11 +137,15 @@ public class TimetableFragment extends Fragment implements Updateable {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
 
-    private void initCallsFragment() {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        CallsFragment fragment = new CallsFragment();
-        transaction.replace(R.id.timerFragment_container, fragment);
-        transaction.commit();
+    private void initCallsFragment(View v) {
+        ViewGroup callsContainer = v.findViewById(R.id.timerFragment_container);
+        View timerView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_calls, callsContainer, false);
+        ViewGroup timerLayoutRoot = timerView.findViewById(R.id.callsMainContainer);
+        mCallsTv = timerView.findViewById(R.id.call_time_tv);
+        mLunchTv = timerView.findViewById(R.id.groups_at_lunch_tv);
+        callsContainer.addView(timerView);
+        callsTimer = new Timer(getContext(), timerLayoutRoot, mCallsTv, mLunchTv);
+        callsTimer.start();
     }
 
 
@@ -165,6 +166,12 @@ public class TimetableFragment extends Fragment implements Updateable {
             showGroupList(false);
             collapsingToolbarLayout.setTitle(SELECT_GROUP_IN_PREFERENCES);
         }
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(mCallsTv.length() == 0)
+            callsTimer.update();
     }
 
 }

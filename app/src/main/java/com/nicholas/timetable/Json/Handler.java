@@ -1,4 +1,4 @@
-package com.nicholas.timetable.JsonHandler;
+package com.nicholas.timetable.Json;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class Handler {
 

@@ -17,7 +17,9 @@
         tools:layout="@layout/fragment_loading_error" >
         <action
             android:id="@+id/action_loadingErrorFragment_to_loadFragment"
-            app:destination="@id/loadFragment" />
+            app:destination="@id/loadFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/loadFragment"
@@ -27,10 +29,17 @@
         <action
             android:id="@+id/action_loadFragment_to_loadingErrorFragment"
             app:destination="@id/loadingErrorFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_loadFragment_to_timetableFragment"
             app:destination="@+id/timetableFragment"
-            app:launchSingleTop="false" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

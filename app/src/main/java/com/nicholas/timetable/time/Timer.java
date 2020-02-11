@@ -3,6 +3,7 @@ package com.nicholas.timetable.time;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -45,11 +47,14 @@ public class Timer extends AsyncTask<Void, String, String> {
     private ViewGroup mContainer;
 
 
-    public Timer(ViewGroup container, TextView callTv, TextView groupsTv){
+
+    private static final String[] CALLS_TIME = new String[] {"9:00", "10:40", "12:50", "14:50", "16:30"};
+
+    public Timer(Context context, ViewGroup container, TextView callTv, TextView groupsTv){
+        mContext = context;
         mCallTv = callTv;
         mGroupsTv = groupsTv;
         dateFormat = new SimpleDateFormat("HH:mm");
-        mContext = callTv.getContext();
         mContainer = container;
         loadCallsAsset();
     }
@@ -57,10 +62,12 @@ public class Timer extends AsyncTask<Void, String, String> {
     public void start(){
         mGroupsTv.setText("");
         this.execute();
+        Log.d("DEBUG", "Timer thread started");
     }
 
 
     public void update(){
+        Log.d("DEBUG", "publish results");
         Date currentDate = new Date();
         if(currentDate.getDay() == 6 || currentDate.getDay() == 0) {
             mCallTv.setText(mContext.getString(R.string.nextCallInMonday));
@@ -96,11 +103,6 @@ public class Timer extends AsyncTask<Void, String, String> {
             catch (ParseException e){e.printStackTrace();}
             catch (IndexOutOfBoundsException e1){}
             if(currentTime.compareTo(date1) == 1 && currentTime.compareTo(date2) == -1 || currentTime.compareTo(date2) == 0){
-                if(currentTime.compareTo(date2) == 0)
-                {
-                    mCallTv.setText(String.format("Следующий звонок в %s\n(%s)", pairs.get(i + 2).getTime(), pairs.get(i + 2).getType()));
-                    break;
-                }
                 mCallTv.setText(String.format("Следующий звонок в %s\n(%s)", pairs.get(i + 1).getTime(), pairs.get(i + 1).getType()));
                 // Фоновое изображение (switch не работает)
                 if(pairs.get(i + 1).getType().equals(TYPE_TO_LESSON))
@@ -111,7 +113,7 @@ public class Timer extends AsyncTask<Void, String, String> {
                     mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.stol));
                 else if(pairs.get(i + 1).getType().equals(TYPE_LAST))
                     mContainer.setBackground(mContext.getResources().getDrawable(R.drawable.time));
-                //
+
                 if(pairs.get(i +1).getGroupsAtLunch() != null)
                     mGroupsTv.setText(String.format("Обедают группы: %s", pairs.get(i + 1).getGroupsAtLunch()));
                 else if(pairs.get(i).getGroupsAtLunch() != null)
@@ -122,6 +124,7 @@ public class Timer extends AsyncTask<Void, String, String> {
                 return;
             }
         }
+        Log.d("DEBUG", "Timer thread updated");
     }
     private int checkFirstAndLastCall(Date currentDate){
         Date firstCall = null;
@@ -167,6 +170,29 @@ public class Timer extends AsyncTask<Void, String, String> {
             pairs = gson.fromJson(reader, type);
         }
     }
+
+//    public static int getCurrentPairNumber(){
+//
+//        Calendar calendar = Calendar.getInstance();
+//
+//        if(calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY){
+//            DateFormat format = new SimpleDateFormat("HH:mm");
+//            try {
+//                Date date = format.parse(Integer.toString(calendar.get(Calendar.DATE)));
+//
+//                for(int i = 0; i < CALLS_TIME.length; i++){
+//                    if(date.compareTo(format.parse(CALLS_TIME[i])) == -1)
+//
+//                }
+//
+//
+//            }
+//            catch (ParseException e){
+//
+//            }
+//        }
+//        return -1;
+//    }
 
 
 

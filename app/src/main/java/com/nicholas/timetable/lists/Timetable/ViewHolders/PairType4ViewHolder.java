@@ -55,6 +55,7 @@ public class PairType4ViewHolder extends AbstractPairViewHolder {
             } else {
                 pairBodySubgroup2Tv.setText(k.getName() + "\n\n" + k.getTeacher());
                 pairBodySubgroup2RoomTv.setText(k.getRoom());
+
             }
 
         }
